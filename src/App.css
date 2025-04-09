@@ -1,6 +1,5 @@
 /* src/App.css */
 
-/* Estilos globales (ya los tienes) */
 body {
   font-family: sans-serif;
   margin: 0;
@@ -103,4 +102,67 @@ button:active {
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
+}
+
+/* Zona para arrastrar imágenes */
+.drop-zone {
+  border: 2px dashed #999;
+  padding: 30px;
+  text-align: center;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  color: #666;
+  font-weight: bold;
+}
+
+/* Contenedor del progreso */
+.upload-progress {
+  text-align: center;
+}
+
+.upload-progress progress {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.cancel-btn {
+  background-color: #e53935;
+}
+
+/* Botón de eliminar */
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Notificaciones */
+.notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 1000;
+  color: white;
+}
+
+.notification.success {
+  background-color: #4caf50;
+}
+
+.notification.error {
+  background-color: #e53935;
 }
