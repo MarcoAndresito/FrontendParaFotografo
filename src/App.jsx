@@ -3,6 +3,7 @@ import "./App.css";
 import reactLogo from "./assets/react.svg";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import Login from "./pages/login";
 import viteLogo from "/vite.svg";
 
 const App = () => {
@@ -17,10 +18,12 @@ const App = () => {
         </a>
         <Link to="/">Inicio</Link>
         <Link to="/about">Acerca de</Link>
+        <Link to="/login">Login</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
