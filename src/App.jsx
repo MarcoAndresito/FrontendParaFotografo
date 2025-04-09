@@ -3,6 +3,8 @@ import "./App.css";
 import reactLogo from "./assets/react.svg";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import UploadPhoto from "./pages/UploadPhoto";  // Importar UploadPhoto desde pages
+
 import viteLogo from "/vite.svg";
 
 const App = () => {
@@ -17,10 +19,12 @@ const App = () => {
         </a>
         <Link to="/">Inicio</Link>
         <Link to="/about">Acerca de</Link>
+        <Link to="/uploadphoto">Álbum</Link> {/* Enlace a la página de carga de fotos */}
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/uploadphoto" element={<UploadPhoto />} /> {/* Ruta correcta para UploadPhoto */}
       </Routes>
     </BrowserRouter>
   );
