@@ -12,3 +12,5 @@ const RegisterUser = () => {
         </div>
     );
 };
+
+export default RegisterUser; 
