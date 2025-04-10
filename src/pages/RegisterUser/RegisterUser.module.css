@@ -4,7 +4,9 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    height: 50vh;
+    
+    margin: 80px auto;
+    padding: 2rem;
     
 }
 
@@ -16,23 +18,37 @@
     border: 1px solid #e5e7eb;
     border-radius: 5px;
     background-color: #f9fafb;
-    box-shadow: 0 0 30px #000;
+    box-shadow: 0 0 15px #ffffff;
 }
 
 .input {
-    margin-bottom: 10px;
+  margin: 10px 0px;
   padding: 8px;
   border: 1px solid #926c6c;
   border-radius: 4px;
+  box-shadow: 0 0 4px #000;
 }
 
 .buton {
-    padding: 10px;
+  padding: 10px 0;
   background: #2563EB;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 15px;
+  justify-content: center;
+  font-size: 13px;
+  
+}
+
+.buton:last-child{
+  background: #e90f0f;
+}
+
+.titulo {
+  color: #000;
+  font-size: 25px;
 }
 
 @media (max-width: 400px) {
