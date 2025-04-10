@@ -4,7 +4,8 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
+  background-color: hsl(0, 0%, 20%); /* Color de fondo oscuro */
+  color: #fff; /* Texto blanco */
 }
 
 nav {
@@ -26,7 +27,6 @@ nav a:hover {
 h1 {
   text-align: center;
   margin-top: 2rem;
-  color: #333;
 }
 
 /* Estilos específicos para la página de UploadPhoto */
@@ -166,3 +166,4 @@ button:active {
 .notification.error {
   background-color: #e53935;
 }
+
