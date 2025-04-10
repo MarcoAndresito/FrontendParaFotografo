@@ -1,10 +1,4 @@
 /* src/styles.css */
-body {
-  font-family: sans-serif;
-  background-color: hsl(0, 0%, 20%); /* Color de fondo oscuro */
-  margin: 0;
-  padding: 0;
-}
 
 .login-container {
   max-width: 360px;
