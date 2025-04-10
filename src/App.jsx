@@ -3,6 +3,7 @@ import "./App.css";
 import reactLogo from "./assets/react.svg";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import Login from "./pages/login";
 import UploadPhoto from "./pages/UploadPhoto";  // Importar UploadPhoto desde pages
 
 import RegisterUser from "./pages/RegisterUser/RegisterUser";
@@ -21,6 +22,7 @@ const App = () => {
         </a>
         <Link to="/">Inicio</Link>
         <Link to="/about">Acerca de</Link>
+        <Link to="/login">Login</Link>
         <Link to="/uploadphoto">Álbum</Link> {/* Enlace a la página de carga de fotos */}
         <Link to="/RegisterUser">Registro de usuario</Link>
         
@@ -29,6 +31,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="login" element={<Login />} />
         <Route path="/uploadphoto" element={<UploadPhoto />} /> {/* Ruta correcta para UploadPhoto */}
         <Route path="/RegisterUser" element= {<RegisterUser/>}/>
         <Route path="/Autenticacion" element={<Autenticacion />} />
