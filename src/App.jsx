@@ -11,6 +11,7 @@ import viteLogo from "/vite.svg";
 import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
 import ProductosList from "./pages/Productos/ProductosList";
 import ProductosUpd from "./pages/Productos/ProductosUpd";
+import ConfigurarAlbum from "./pages/ConfigurarAlbum/ConfigurarAlbum";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Link to="/RegisterUser">Registro de usuario</Link>
         <Link to="/Autenticacion">Autenticación Segura</Link>
         <Link to="/Productos">Productos</Link>
+        <Link to="/ConfigurarAlbum">Configurar Álbum</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -41,6 +43,7 @@ const App = () => {
         <Route path="/Autenticacion" element={<Autenticacion />} />
         <Route path="/Productos" element={<ProductosList />} />
         <Route path="/Productos/:id" element={<ProductosUpd />} />
+        <Route path="/ConfigurarAlbum" element={<ConfigurarAlbum />} />
       </Routes>
     </BrowserRouter>
   );
