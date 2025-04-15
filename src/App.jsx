@@ -4,11 +4,13 @@ import reactLogo from "./assets/react.svg";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import Login from "./pages/login";
-import UploadPhoto from "./pages/UploadPhoto";  // Importar UploadPhoto desde pages
+import UploadPhoto from "./pages/UploadPhoto"; // Importar UploadPhoto desde pages
 
 import RegisterUser from "./pages/RegisterUser/RegisterUser";
 import viteLogo from "/vite.svg";
 import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
+import ProductosList from "./pages/Productos/ProductosList";
+import ProductosUpd from "./pages/Productos/ProductosUpd";
 
 const App = () => {
   return (
@@ -23,18 +25,22 @@ const App = () => {
         <Link to="/">Inicio</Link>
         <Link to="/about">Acerca de</Link>
         <Link to="/login">Login</Link>
-        <Link to="/uploadphoto">Álbum</Link> {/* Enlace a la página de carga de fotos */}
+        <Link to="/uploadphoto">Álbum</Link>{" "}
+        {/* Enlace a la página de carga de fotos */}
         <Link to="/RegisterUser">Registro de usuario</Link>
-        
         <Link to="/Autenticacion">Autenticación Segura</Link>
+        <Link to="/Productos">Productos</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="login" element={<Login />} />
-        <Route path="/uploadphoto" element={<UploadPhoto />} /> {/* Ruta correcta para UploadPhoto */}
-        <Route path="/RegisterUser" element= {<RegisterUser/>}/>
+        <Route path="/uploadphoto" element={<UploadPhoto />} />{" "}
+        {/* Ruta correcta para UploadPhoto */}
+        <Route path="/RegisterUser" element={<RegisterUser />} />
         <Route path="/Autenticacion" element={<Autenticacion />} />
+        <Route path="/Productos" element={<ProductosList />} />
+        <Route path="/Productos/:id" element={<ProductosUpd />} />
       </Routes>
     </BrowserRouter>
   );
