@@ -20,6 +20,29 @@ const COMENT = () => {
     setError(''); // Limpiar el error al escribir
   };
 
+  const handleImageUpload = (e) => {
+    const files = Array.from(e.target.files);
+
+    if (files.length + images.length > MAX_IMAGE_COUNT) {
+      setError(`Máximo ${MAX_IMAGE_COUNT} imágenes permitidas.`);
+      return;
+    }
+
+    for (let file of files) {
+      if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+        setError('Solo se permiten imágenes JPG, PNG y GIF.');
+        return;
+      }
+      if (file.size > MAX_IMAGE_SIZE_MB * 1024 * 1024) {
+        setError(`El tamaño máximo por imagen es ${MAX_IMAGE_SIZE_MB}MB.`);
+        return;
+      }
+    }
+
+    setImages((prev) => [...prev, ...files]);
+    setError('');
+  };
+
 
   return (
     <div className="coment-container">
@@ -29,8 +52,17 @@ const COMENT = () => {
         onChange={handleTextChange}
         placeholder="Escribe algo interesante..."
         className="coment-textarea"
-      
       />
+
+       <input
+        type="file"
+        multiple
+        accept=".jpg,.jpeg,.png,.gif"
+        onChange={handleImageUpload}
+        className="coment-file-input"
+      />
+
+
     </div>
   );
 };
