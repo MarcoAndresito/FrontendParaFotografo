@@ -71,8 +71,8 @@ const COMENT = () => {
           ))}
         </div>
       )}
+    {error && <div className="coment-error">{error}</div>}
     
-
 
     </div>
   );
