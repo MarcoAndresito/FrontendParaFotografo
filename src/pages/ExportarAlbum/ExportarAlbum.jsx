@@ -26,4 +26,31 @@ const handleSelect = (item) => {
   }
 };
 
+const handleExport = async () => {
+  if (selectedItems.length === 0) {
+    toast.warning("Selecciona al menos una foto o álbum.");
+    return;
+  }
+
+  setIsExporting(true);
+  setProgress(0);
+  setDownloadLink(null);
+
+  try {
+    for (let i = 1; i <= 100; i++) {
+      await new Promise((r) => setTimeout(r, 30));
+      setProgress(i);
+    }
+
+    const fakeDownloadLink = "https://example.com/descarga-temporal.zip";
+    setDownloadLink(fakeDownloadLink);
+
+    toast.success("¡Exportación completada!");
+  } catch (err) {
+    toast.error("Error al exportar: " + err.message);
+  } finally {
+    setIsExporting(false);
+  }
+};
+
  export default ExportPhotos;
