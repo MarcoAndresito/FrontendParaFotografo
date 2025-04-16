@@ -11,6 +11,11 @@ import ProductosList from "./pages/Productos/ProductosList";
 import ProductosUpd from "./pages/Productos/ProductosUpd";
 import RegisterUser from "./pages/RegisterUser/RegisterUser";
 import UploadPhoto from "./pages/UploadPhoto"; // Importar UploadPhoto desde pages
+
+// Parametros 
+import ParametrosList from "./pages/Parametros/ParametrosList";
+
+
 import viteLogo from "/vite.svg";
 
 const App = () => {
@@ -31,6 +36,7 @@ const App = () => {
         <Link to="/RegisterUser">Registro de usuario</Link>
         <Link to="/Autenticacion">Autenticación Segura</Link>
         <Link to="/Productos">Productos</Link>
+        <Link to="/Parametros">Parametros</Link>
         <Link to="/ConfigurarAlbum">Configurar Álbum</Link>
       </nav>
       <Routes>
@@ -42,6 +48,7 @@ const App = () => {
         <Route path="/RegisterUser" element={<RegisterUser />} />
         <Route path="/Autenticacion" element={<Autenticacion />} />
         <Route path="/Productos" element={<ProductosList />} />
+        <Route path="/Parametros" element={<ParametrosList />} />
         <Route path="/Productos/:id" element={<ProductosUpd />} />
         <Route path="/Productos/new" element={<ProductosAdd />} />
         <Route path="/ConfigurarAlbum" element={<ConfigurarAlbum />} />
