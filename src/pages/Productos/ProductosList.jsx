@@ -1,7 +1,6 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import styles from "./Productos.module.css";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "./Productos.module.css";
 
 const ProductosList = () => {
   const [productos, setProductos] = useState([]);
@@ -24,6 +23,28 @@ const ProductosList = () => {
       });
   };
 
+  const eliminar = async (id) => {
+    try {
+      const data = await fetch(`https://localhost:7062/api/Productos/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const json = await data.json();
+      console.log(json);
+      return true;
+    } catch (error) {
+      console.log("Error : ", error);
+      return false;
+    }
+  };
+
+  const handleDelete = async (id) => {
+    await eliminar(id);
+    obtenerProductos();
+  };
+
   useEffect(() => {
     obtenerProductos();
   }, []);
@@ -31,6 +52,7 @@ const ProductosList = () => {
   return (
     <div>
       <h1>Lista de productos</h1>
+      <Link to="/Productos/new">Agregar nuevo producto</Link>
       <table className={styles.mytable}>
         <thead>
           <tr>
@@ -52,6 +74,9 @@ const ProductosList = () => {
               <td>{item.stock}</td>
               <td>
                 <Link to={`/Productos/${item.id}`}>Editar</Link>
+                <button type="button" onClick={() => handleDelete(item.id)}>
+                  Eliminar
+                </button>
               </td>
             </tr>
           ))}

@@ -1,9 +1,9 @@
-import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./Productos.module.css";
 
 const ProductosUpd = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [producto, setProducto] = useState();
 
@@ -48,14 +48,21 @@ const ProductosUpd = () => {
       );
       const json = await data.json();
       console.log(json);
+      return true;
     } catch (error) {
       console.log("Error : ", error);
+      return false;
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await guardar();
+    const resultado = await guardar();
+    if (resultado) {
+      navigate("/Productos");
+    } else {
+      // TODO: mostrar una modal indicando el error
+    }
   };
 
   useEffect(() => {

@@ -2,16 +2,16 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 import About from "./pages/About";
+import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
+import ConfigurarAlbum from "./pages/ConfigurarAlbum/ConfigurarAlbum";
 import Home from "./pages/Home";
 import Login from "./pages/login";
-import UploadPhoto from "./pages/UploadPhoto"; // Importar UploadPhoto desde pages
-
-import RegisterUser from "./pages/RegisterUser/RegisterUser";
-import viteLogo from "/vite.svg";
-import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
+import ProductosAdd from "./pages/Productos/ProductosAdd";
 import ProductosList from "./pages/Productos/ProductosList";
 import ProductosUpd from "./pages/Productos/ProductosUpd";
-import ConfigurarAlbum from "./pages/ConfigurarAlbum/ConfigurarAlbum";
+import RegisterUser from "./pages/RegisterUser/RegisterUser";
+import UploadPhoto from "./pages/UploadPhoto"; // Importar UploadPhoto desde pages
+import viteLogo from "/vite.svg";
 
 const App = () => {
   return (
@@ -43,6 +43,7 @@ const App = () => {
         <Route path="/Autenticacion" element={<Autenticacion />} />
         <Route path="/Productos" element={<ProductosList />} />
         <Route path="/Productos/:id" element={<ProductosUpd />} />
+        <Route path="/Productos/new" element={<ProductosAdd />} />
         <Route path="/ConfigurarAlbum" element={<ConfigurarAlbum />} />
       </Routes>
     </BrowserRouter>
