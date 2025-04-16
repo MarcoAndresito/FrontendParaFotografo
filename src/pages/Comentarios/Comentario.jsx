@@ -15,9 +15,22 @@ const COMENT = () => {
   const [error, setError] = useState('');
   const [lastComment, setLastComment] = useState('');
 
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+    setError(''); // Limpiar el error al escribir
+  };
+
+
   return (
     <div className="coment-container">
-      {/* ... contenido del formulario ... */}
+        <h2 className="coment-title" >DEJA TU COMENTARIO</h2>
+      <textarea
+        value={text}
+        onChange={handleTextChange}
+        placeholder="Escribe algo interesante..."
+        className="coment-textarea"
+      
+      />
     </div>
   );
 };
