@@ -39,6 +39,10 @@ const EdicionPerfil = () => {
     console.log("Perfil actualizado:", formData);
   };
 
+  const verificarCorreo = async (correo) => {
+    return false;
+  };
+
 }
 
 export default EdicionPerfil;
