@@ -62,6 +62,17 @@ const COMENT = () => {
         className="coment-file-input"
       />
 
+      {images.length > 0 && (
+        <div className="coment-image-preview">
+          {images.map((img, idx) => (
+            <div key={idx} className="coment-image-box">
+              <img src={URL.createObjectURL(img)} alt="preview" />
+            </div>
+          ))}
+        </div>
+      )}
+    
+
 
     </div>
   );
