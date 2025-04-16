@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './Coment.css'; 
 
 const PROHIBITED_WORDS = ['palabrota1', 'palabrota2'];
 const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
