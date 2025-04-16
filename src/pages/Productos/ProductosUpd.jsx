@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import InputText from "../../Components/Inputs/InputText";
 import styles from "./Productos.module.css";
 
 const ProductosUpd = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [producto, setProducto] = useState();
 
@@ -48,14 +49,21 @@ const ProductosUpd = () => {
       );
       const json = await data.json();
       console.log(json);
+      return true;
     } catch (error) {
       console.log("Error : ", error);
+      return false;
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await guardar();
+    const resultado = await guardar();
+    if (resultado) {
+      navigate("/Productos");
+    } else {
+      // TODO: mostrar una modal indicando el error
+    }
   };
 
   useEffect(() => {
@@ -67,97 +75,63 @@ const ProductosUpd = () => {
       <h1>Editar el producto {id} </h1>
       {producto && (
         <>
-          <div>
-            <label htmlFor="id" className={styles.mylabel}>
-              Id
-            </label>
-            <input
-              type="number"
-              name="id"
-              id="id"
-              value={producto.id}
-              readOnly
-            />
-          </div>
-          <div>
-            <label htmlFor="nombre" className={styles.mylabel}>
-              Nombre
-            </label>
-            <input
-              type="text"
-              name="nombre"
-              id="nombre"
-              value={producto.nombre}
-              onChange={(e) => {
-                setProducto((oldData) => {
-                  return {
-                    ...oldData,
-                    nombre: e.target.value,
-                  };
-                });
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="marca" className={styles.mylabel}>
-              Marca
-            </label>
-            <input
-              type="text"
-              name="marca"
-              id="marca"
-              value={producto.marca}
-              onChange={(e) => {
-                setProducto((oldData) => {
-                  return {
-                    ...oldData,
-                    marca: e.target.value,
-                  };
-                });
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="precio" className={styles.mylabel}>
-              Precio
-            </label>
-            <input
-              type="number"
-              name="precio"
-              id="precio"
-              value={producto.precio}
-              onChange={(e) => {
-                setProducto((oldData) => {
-                  return {
-                    ...oldData,
-                    precio: e.target.value,
-                  };
-                });
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="stock" className={styles.mylabel}>
-              Stock
-            </label>
-            <input
-              type="number"
-              name="stock"
-              id="stock"
-              value={producto.stock}
-              onChange={(e) => {
-                setProducto((oldData) => {
-                  return {
-                    ...oldData,
-                    stock: e.target.value,
-                  };
-                });
-              }}
-            />
+          <InputText
+            id="id"
+            textLabel="Codigo"
+            type="number"
+            value={producto.id}
+          />
+          <InputText
+            id="nombre"
+            textLabel="Nombre"
+            type="text"
+            value={producto.nombre}
+            onChange={(nombre) =>
+              setProducto((oldData) => ({
+                ...oldData,
+                nombre: nombre,
+              }))
+            }
+          />
+          <InputText
+            id="marca"
+            textLabel="Marca"
+            type="text"
+            value={producto.marca}
+            onChange={(marca) =>
+              setProducto((oldData) => ({
+                ...oldData,
+                marca: marca,
+              }))
+            }
+          />
+          <InputText
+            id="precio"
+            textLabel="Precio"
+            type="number"
+            value={producto.precio}
+            onChange={(precio) =>
+              setProducto((oldData) => ({
+                ...oldData,
+                precio: precio,
+              }))
+            }
+          />
+          <InputText
+            id="stock"
+            textLabel="Stock"
+            type="number"
+            value={producto.stock}
+            onChange={(stock) =>
+              setProducto((oldData) => ({
+                ...oldData,
+                stock: stock,
+              }))
+            }
+          />
 
-            <div>
-              <button type="submit">Guardar</button>
-            </div>
+          <div>
+            <button type="submit">Guardar</button>
           </div>
         </>
       )}
