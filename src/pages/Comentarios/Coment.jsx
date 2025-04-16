@@ -183,10 +183,10 @@ const COMENT = () => {
             )}
 
             <button onClick={() => handleReportComment(index)} className="coment-button-report">
-              🚩 Reportar
+               Reportar
             </button>
             <button onClick={() => handleDeleteComment(index)} className="coment-button-delete">
-              🗑 Eliminar
+              Eliminar
             </button>
           </div>
         ))}
