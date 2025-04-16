@@ -5,7 +5,11 @@ import { useState } from "react";
 
   const ParametrosList = () => {
 
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalTipo, setModalTipo] = useState("");
+    const [parametroSeleccionado, setParametroSeleccionado] = useState(null);
     const [parametros, setParametros] = useState([]);
+
     const obtenerProductos = () => {
       fetch("http://localhost:5188/api/Parametros", {
         method: "GET",
@@ -26,6 +30,13 @@ import { useState } from "react";
     useEffect(() => {
       obtenerProductos();
     }, []);
+    
+    const handleMostrar = (parametro) => {
+
+        setParametroSeleccionado(parametro);
+        setModalTipo("ver");
+        setModalVisible(true);
+      };
 
     return (
       <div className={styles.contenedor}>
@@ -51,7 +62,7 @@ import { useState } from "react";
                     <td>{parametro.valor}</td>
                     <td>{parametro.descripcion}</td>
                     <td className={styles.acciones}>
-                        <button className={`${styles.boton} ${styles.ver}`} >Ver</button>
+                        <button className={`${styles.boton} ${styles.ver}`} onClick={() => handleMostrar(parametro)} >Ver</button>
                         <button className={`${styles.boton} ${styles.editar}`} >Editar</button>
                         <button className={`${styles.boton} ${styles.eliminar}`}>Eliminar</button>
                     </td>
@@ -67,8 +78,25 @@ import { useState } from "react";
             )}
             </tbody>
         </table>
+        {modalVisible && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modal}>
+            <h3>{modalTipo === "ver" ? "Detalles del Parámetro" : modalTipo === "editar" ? "Editar Parámetro" : "Eliminar Parámetro"}</h3>
+            {modalTipo === "ver" && (
+              <div>
+                <p><strong>Servicio:</strong> {parametroSeleccionado.servicio}</p>
+                <p><strong>Clave:</strong> {parametroSeleccionado.clave}</p>
+                <p><strong>Valor:</strong> {parametroSeleccionado.valor}</p>
+                <p><strong>Descripción:</strong> {parametroSeleccionado.descripcion}</p>
+                <button onClick={() => setModalVisible(false)}>Cerrar</button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
       </div>
     );
   };
+
   
 export default ParametrosList;
