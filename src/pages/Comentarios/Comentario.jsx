@@ -43,6 +43,22 @@ const COMENT = () => {
     setError('');
   };
 
+  const containsProhibitedWords = (text) => {
+    return PROHIBITED_WORDS.some((word) =>
+      text.toLowerCase().includes(word)
+    );
+  };
+
+  const containsEmptyTags = (text) => {
+    return /<[^/>]*><\/[^>]*>/.test(text);
+  };
+
+  const isRichTextValid = (text) => {
+    const richTextPattern = /<b>|<i>|<a href="[^"]+">.*?<\/a>/;
+    return richTextPattern.test(text) || text === '';
+  };
+
+
 
   return (
     <div className="coment-container">
@@ -72,7 +88,10 @@ const COMENT = () => {
         </div>
       )}
     {error && <div className="coment-error">{error}</div>}
-    
+    <button className="coment-button">
+        Comentar
+    </button>
+
 
     </div>
   );
