@@ -1,0 +1,18 @@
+.exportContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #1e272e; /* Un fondo oscuro más elegante */
+  padding: 30px;
+}
+
+.exportForm {
+  background-color: #fff;
+  padding: 50px; /* Más espacio interior */
+  border-radius: 16px; /* Bordes más redondeados */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada y suave */
+  width: 90%;
+  max-width: 600px; /* Un ancho máximo un poco mayor */
+}
