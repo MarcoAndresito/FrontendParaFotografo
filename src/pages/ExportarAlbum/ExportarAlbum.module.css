@@ -52,8 +52,136 @@
   font-size: 1em;
 }
 
-.selectFileButton:hover {
-  background-color: #2979ff;
+.submitButton {
+  background-color: #ffc107; /* Dorado */
   color: #fff;
-  border-color: #1e60c2; /* Un tono más oscuro al hacer hover */
+  padding: 14px 28px; /* Más espacio */
+  border: none;
+  border-radius: 10px; /* Bordes más redondeados */
+  cursor: pointer;
+  font-size: 1.1em; /* Tamaño de fuente un poco mayor */
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir una pequeña sombra */
+}
+
+.submitButton:hover {
+  background-color: #e0a800; /* Tono dorado más oscuro al hacer hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al hacer hover */
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.exportGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Cajas un poco más anchas */
+  gap: 15px; /* Un poco más de espacio entre cajas */
+  margin-bottom: 30px;
+}
+
+.exportItem {
+  background-color: #fff;
+  border: 1px solid #e0e0e0; /* Borde más claro */
+  padding: 15px; /* Más espacio interior */
+  border-radius: 10px; /* Bordes más redondeados */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.exportItem:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px); /* Pequeña elevación al hacer hover */
+}
+
+.exportItem.selected {
+  background-color: #e3f2fd; /* Azul muy claro para la selección */
+  border-color: #2979ff; /* Azul más intenso para el borde de selección */
+  box-shadow: 0 4px 8px rgba(41, 121, 255, 0.15); /* Sombra sutil para la selección */
+}
+
+.itemInfo {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  color: #444;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.blue {
+  color: #2979ff; /* Azul */
+}
+
+.yellow {
+  color: #ffc107; /* Dorado */
+}
+
+.exportFormatGroup {
+  margin-bottom: 30px;
+}
+
+.exportFormatGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+  font-size: 1em;
+}
+
+.exportFormat {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  color: #333;
+}
+
+.exportActions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.exportProgress {
+  flex-grow: 1;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.exportProgressBar {
+  background-color: #ffc107; /* Dorado para la barra de progreso */
+  height: 100%;
+  width: 0%;
+  border-radius: 8px;
+  transition: width 0.3s ease-in-out;
+}
+
+.downloadLink {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.downloadLink a {
+  color: #2979ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.downloadLink a:hover {
+  color: #1e60c2;
+  text-decoration: underline;
 }
