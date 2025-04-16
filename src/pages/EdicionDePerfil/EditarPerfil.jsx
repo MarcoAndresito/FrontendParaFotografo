@@ -43,6 +43,25 @@ const EdicionPerfil = () => {
     return false;
   };
 
+  return (
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h2 className={styles.titulo}>Editar Perfil</h2>
+
+        <input
+          className={styles.input}
+          type="text"
+          name="nombre"
+          placeholder="Nombre completo"
+          value={formData.nombre}
+          onChange={handleChange}
+          required
+        />
+      </form>
+    </div>
+    );
+
+
 }
 
 export default EdicionPerfil;
