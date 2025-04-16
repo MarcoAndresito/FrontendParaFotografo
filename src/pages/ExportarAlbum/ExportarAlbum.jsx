@@ -11,4 +11,19 @@ const ExportPhotos = () => {
   const [downloadLink, setDownloadLink] = useState(null);
 
 }
+
+const items = [
+  { id: 1, name: "Foto1.jpg", type: "photo" },
+  { id: 2, name: "Foto2.png", type: "photo" },
+  { id: 3, name: "Álbum Vacaciones", type: "album" },
+];
+
+const handleSelect = (item) => {
+  if (selectedItems.includes(item.id)) {
+    setSelectedItems(selectedItems.filter((i) => i !== item.id));
+  } else {
+    setSelectedItems([...selectedItems, item.id]);
+  }
+};
+
  export default ExportPhotos;
