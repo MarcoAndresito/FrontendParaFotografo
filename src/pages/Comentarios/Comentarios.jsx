@@ -114,6 +114,18 @@ import { Link } from 'react-router-dom';
         setImages([]);
         setError('');
       };
+      const normas = [
+        "No publiques contenido ofensivo o discriminatorio.",
+        "Respeta las opiniones de los demás miembros.",
+        "No hagas spam ni promociones no autorizadas.",
+        "Mantén las discusiones dentro del tema del grupo.",
+        "Reporta cualquier contenido que viole las normas.",
+      ];
+    
+      const mostrarNormas = () => {
+        const normasTexto = normas.map(norma => `- ${norma}`).join('\n');
+        alert(`Normas del Grupo:\n${normasTexto}`);
+      };
     
       return (
         <div className="coment-container">
@@ -143,7 +155,9 @@ import { Link } from 'react-router-dom';
           {error && <div className="coment-error">{error}</div>}
           <button onClick={handleSubmit} className="coment-button">
             Comentar
-          </button> <br /> <br />
+          </button> <button onClick={mostrarNormas} className="mode-button">
+        Verificar las Normas
+      </button> <br />
           <Link to="/ModComentarios">
   <button className="mode-button">
     Moderador

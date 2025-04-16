@@ -14,6 +14,7 @@ import UploadPhoto from "./pages/UploadPhoto"; // Importar UploadPhoto desde pag
 import viteLogo from "/vite.svg";
 import Comentarios from "./pages/Comentarios/Comentarios";
 import ModComentarios from "./pages/Comentarios/ModComentarios";
+import Moderador from "./pages/Comentarios/Moderador";
 
 const App = () => {
   return (
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/ConfigurarAlbum" element={<ConfigurarAlbum />} />
         <Route path="/Comentarios" element={<Comentarios />} />
         <Route path="/ModComentarios" element={<ModComentarios />} />
+        <Route path="/Moderador" element={<Moderador />} />
       </Routes>
     </BrowserRouter>
   );
