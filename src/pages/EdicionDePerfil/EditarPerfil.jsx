@@ -28,6 +28,17 @@ const EdicionPerfil = () => {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const emailEnUso = await verificarCorreo(formData.correo);
+    if (emailEnUso) {
+      setEmailError("Este correo ya está en uso");
+      return;
+    }
+    setEmailError("");
+    console.log("Perfil actualizado:", formData);
+  };
+
 }
 
 export default EdicionPerfil;
