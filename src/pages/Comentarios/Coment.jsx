@@ -6,6 +6,7 @@ const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
 const MAX_IMAGE_SIZE_MB = 2;
 const MAX_IMAGE_COUNT = 3;
 const COMMENT_COOLDOWN_MS = 10000;
+const MAX_TEXT_LENGTH = 500;
 const existingUsers = ['@juan', '@maria', '@admin'];
 
 const COMENT = () => {
@@ -14,6 +15,7 @@ const COMENT = () => {
   const [lastCommentTime, setLastCommentTime] = useState(0);
   const [error, setError] = useState('');
   const [lastComment, setLastComment] = useState('');
+  
 
   const handleTextChange = (e) => {
     setText(e.target.value);
@@ -57,6 +59,12 @@ const COMENT = () => {
     const richTextPattern = /<b>|<i>|<a href="[^"]+">.*?<\/a>/;
     return richTextPattern.test(text) || text === '';
   };
+
+  const validateMentions = (text) => {
+    const mentions = text.match(/@\w+/g) || [];
+    return mentions.every(m => existingUsers.includes(m));
+  };
+
 
 
 
