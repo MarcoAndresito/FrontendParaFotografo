@@ -13,6 +13,7 @@ import RegisterUser from "./pages/RegisterUser/RegisterUser";
 import UploadPhoto from "./pages/UploadPhoto"; // Importar UploadPhoto desde pages
 import viteLogo from "/vite.svg";
 import Comentarios from "./pages/Comentarios/Comentarios";
+import ModComentarios from "./pages/Comentarios/ModComentarios";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Link to="/Productos">Productos</Link>
         <Link to="/ConfigurarAlbum">Configurar Álbum</Link>
         <Link to="/Comentarios">Comentarios</Link>
+        
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -48,6 +50,7 @@ const App = () => {
         <Route path="/Productos/new" element={<ProductosAdd />} />
         <Route path="/ConfigurarAlbum" element={<ConfigurarAlbum />} />
         <Route path="/Comentarios" element={<Comentarios />} />
+        <Route path="/ModComentarios" element={<ModComentarios />} />
       </Routes>
     </BrowserRouter>
   );
