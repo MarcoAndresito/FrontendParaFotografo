@@ -19,6 +19,15 @@ const EdicionPerfil = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
+      setFormData({ ...formData, avatar: file });
+    } else {
+      alert("Solo se permiten imágenes JPG o PNG");
+    }
+  };
+
 }
 
 export default EdicionPerfil;
