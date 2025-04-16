@@ -65,7 +65,58 @@ const COMENT = () => {
     return mentions.every(m => existingUsers.includes(m));
   };
 
+  const handleSubmit = () => {
+    const now = Date.now();
 
+    if (text.trim() === '') {
+      setError("El comentario no puede estar vacío.");
+      return;
+    }
+
+    if (text.length > MAX_TEXT_LENGTH) {
+      setError(`Máximo ${MAX_TEXT_LENGTH} caracteres permitidos.`);
+      return;
+    }
+
+    if (!validateMentions(text)) {
+      setError("Una o más menciones no son válidas.");
+      return;
+    }
+
+    if (!isRichTextValid(text)) {
+      setError("El formato enriquecido es inválido.");
+      return;
+    }
+
+    if (containsProhibitedWords(text)) {
+      setError("Tu comentario contiene palabras no permitidas.");
+      return;
+    }
+
+    if (containsEmptyTags(text)) {
+      setError("Hay etiquetas vacías en tu comentario.");
+      return;
+    }
+
+    if (now - lastCommentTime < COMMENT_COOLDOWN_MS) {
+      setError("Debes esperar antes de comentar nuevamente.");
+      return;
+    }
+
+    if (text === lastComment) {
+      setError("Este comentario ya fue enviado.");
+      return;
+    }
+
+    // Comentario válido
+    setLastCommentTime(now);
+    setLastComment(text);
+    setError('');
+    alert("Comentario enviado correctamente");
+
+    setText('');
+    setImages([]);
+  };
 
 
   return (
