@@ -57,6 +57,19 @@ const EdicionPerfil = () => {
           onChange={handleChange}
           required
         />
+
+<input
+          className={styles.input}
+          type="email"
+          name="correo"
+          placeholder="Correo electrónico"
+          value={formData.correo}
+          onChange={handleChange}
+          required
+        />
+        {emailError && <p className={styles.error}>{emailError}</p>}
+
+        
       </form>
     </div>
     );
