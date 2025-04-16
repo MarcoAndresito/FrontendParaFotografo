@@ -50,10 +50,12 @@ const ProductosList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Lista de productos</h1>
-      <Link to="/Productos/new">Agregar nuevo producto</Link>
-      <table className={styles.mytable}>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Lista de productos</h1>
+      <Link to="/Productos/new" className={styles.addButton}>
+        Agregar nuevo producto
+      </Link>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>Id</th>
@@ -73,10 +75,21 @@ const ProductosList = () => {
               <td>{item.precio}</td>
               <td>{item.stock}</td>
               <td>
-                <Link to={`/Productos/${item.id}`}>Editar</Link>
-                <button type="button" onClick={() => handleDelete(item.id)}>
-                  Eliminar
-                </button>
+                <div className={styles.actions}>
+                  <Link
+                    to={`/Productos/${item.id}`}
+                    className={styles.editButton}
+                  >
+                    Editar
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(item.id)}
+                    className={styles.deleteButton}
+                  >
+                    Eliminar
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
