@@ -78,6 +78,20 @@ const EdicionPerfil = () => {
           onChange={handleChange}
         />
 
+<select
+          className={styles.input}
+          name="especializacion"
+          value={formData.especializacion}
+          onChange={handleChange}
+        >
+          <option value="">Selecciona tu especialización</option>
+          <option value="bodas">Bodas</option>
+          <option value="retratos">Retratos</option>
+          <option value="paisajes">Paisajes</option>
+          <option value="productos">Productos</option>
+          <option value="moda">Moda</option>
+        </select>
+
         
       </form>
     </div>
