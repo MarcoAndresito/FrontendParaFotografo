@@ -10,7 +10,7 @@ const ExportPhotos = () => {
   const [progress, setProgress] = useState(0);
   const [downloadLink, setDownloadLink] = useState(null);
 
-}
+
 
 const items = [
   { id: 1, name: "Foto1.jpg", type: "photo" },
@@ -52,5 +52,82 @@ const handleExport = async () => {
     setIsExporting(false);
   }
 };
+
+return (
+  <div className={styles.exportContainer}>
+    <div className={styles.exportForm}>
+      <h2 className={styles.exportTitle}>Exportar Fotos / Álbumes</h2>
+
+      <div className={styles.exportGrid}>
+        {items.map((item) => (
+          <div
+            key={item.id}
+            className={`${styles.exportItem} ${
+              selectedItems.includes(item.id) ? styles.selected : ""
+            }`}
+            onClick={() => handleSelect(item)}
+          >
+            <div className={styles.itemInfo}>
+              {item.type === "photo" ? (
+                <FileImage size={20} className={styles.icon + " " + styles.blue} />
+              ) : (
+                <Folder size={20} className={styles.icon + " " + styles.yellow} />
+              )}
+              <span>{item.name}</span>
+            </div>
+            <input
+              type="checkbox"
+              checked={selectedItems.includes(item.id)}
+              readOnly
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className={styles.exportFormatGroup}>
+        <label>Formato de Exportación</label>
+        <select
+          value={format}
+          onChange={(e) => setFormat(e.target.value)}
+          className={styles.exportFormat}
+        >
+          <option value="JPG">JPG</option>
+          <option value="PNG">PNG</option>
+          <option value="ZIP">ZIP (para álbumes)</option>
+        </select>
+      </div>
+
+      <div className={styles.exportActions}>
+        <button
+          onClick={handleExport}
+          className={styles.exportButton}
+          disabled={isExporting}
+        >
+          <Download size={18} style={{ marginRight: "6px" }} />
+          Exportar
+        </button>
+
+        {isExporting && (
+          <div className={styles.exportProgress}>
+            <div
+              className={styles.exportProgressBar}
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        )}
+      </div>
+
+      {downloadLink && (
+        <div className={styles.downloadLink}>
+          <a href={downloadLink} target="_blank" rel="noopener noreferrer">
+            Descargar archivo (disponible por 24h)
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+);
+};
+
 
  export default ExportPhotos;
