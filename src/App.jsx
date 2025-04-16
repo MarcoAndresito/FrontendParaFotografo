@@ -12,7 +12,7 @@ import ProductosUpd from "./pages/Productos/ProductosUpd";
 import RegisterUser from "./pages/RegisterUser/RegisterUser";
 import UploadPhoto from "./pages/UploadPhoto"; // Importar UploadPhoto desde pages
 
-// Parametros 
+// Parametros
 import ParametrosList from "./pages/Parametros/ParametrosList";
 
 

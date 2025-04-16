@@ -65,6 +65,32 @@ import { useState } from "react";
             alert("Error al actualizar el parámetro.");
           });
       };
+      const handleEliminar = (parametro) => {
+        setParametroSeleccionado(parametro);
+        setModalTipo("eliminar");
+        setModalVisible(true);
+      };
+      const confirmarEliminacion = () => {
+        fetch(`http://localhost:5188/api/Parametros/${parametroSeleccionado.id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => {
+            if (!response.ok) throw new Error("No se pudo eliminar el parámetro.");
+            return response.text();
+          })
+          .then(() => {
+            alert("Parámetro eliminado con éxito.");
+            setModalVisible(false);
+            obtenerProductos(); // recarga la lista
+          })
+          .catch((error) => {
+            console.error(error);
+            alert("Ocurrió un error al eliminar el parámetro.");
+          });
+      };
     return (
       <div className={styles.contenedor}>
         <h2 className={styles.titulo}>Lista de Parámetros</h2>
@@ -91,13 +117,13 @@ import { useState } from "react";
                     <td className={styles.acciones}>
                         <button className={`${styles.boton} ${styles.ver}`} onClick={() => handleMostrar(parametro)} >Ver</button>
                         <button className={`${styles.boton} ${styles.editar}`} onClick={() => handleEditar(parametro)}>Editar</button>
-                        <button className={`${styles.boton} ${styles.eliminar}`}>Eliminar</button>
+                        <button className={`${styles.boton} ${styles.eliminar}`} onClick={() => handleEliminar(parametro)}>Eliminar</button>
                     </td>
                 </tr>
                 ))
             ) : (
                 <tr>
-                    <td colSpan="3"></td>
+                    <td colSpan="2"></td>
                     <td colSpan="3" className={styles.sinDatos}>
                         No hay parámetros registrados.
                     </td>
@@ -184,12 +210,19 @@ import { useState } from "react";
                     />
                     </div>
                     <div className={styles.modalBotones}>
-                    <button type="submit">Guardar</button>
-                    <button className = {styles.eliminar} type="button" onClick={() => setModalVisible(false)} >
-                        Cancelar
-                    </button>
+                        <button type="submit">Guardar</button>
+                        <button className = {styles.eliminar} type="button" onClick={() => setModalVisible(false)} >
+                            Cancelar
+                        </button>
                     </div>
                 </form>
+                )}
+                {modalTipo === "eliminar" && (
+                    <div>
+                    <p>¿Estás seguro de que deseas eliminar los parametros del servicio <strong>{parametroSeleccionado.servicio}</strong>?</p>
+                    <button onClick={confirmarEliminacion}>Sí, eliminar</button>
+                    <button className = {styles.eliminar} onClick={() => setModalVisible(false)}>Cancelar</button>
+                    </div>
                 )}
           </div>
         </div>
