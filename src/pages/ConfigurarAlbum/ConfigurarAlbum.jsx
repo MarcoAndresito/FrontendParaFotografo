@@ -12,6 +12,8 @@ const ConfigurarAlbum = () => {
     "https://img.freepik.com/foto-gratis/familia-pequeno-hijo-parque-otono_1157-22273.jpg?semt=ais_hybrid&w=740",
     "https://img.freepik.com/foto-gratis/retrato-cuerpo-entero-familia-sonriente-nino_171337-10331.jpg",
     "https://img.freepik.com/foto-gratis/familia-vista-frontal-pasando-rato-embarcadero_23-2150558016.jpg",
+    "https://img.freepik.com/foto-gratis/padres-felices-hijo-naturaleza_23-2148201539.jpg?semt=ais_hybrid&w=740",
+    "https://img.freepik.com/foto-gratis/padres-felices-hijo-naturaleza_23-2148201530.jpg?semt=ais_hybrid&w=740",
   ]);
 
   const handleInputChange = (setter) => (e) => {
