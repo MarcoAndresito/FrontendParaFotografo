@@ -92,6 +92,35 @@ const EdicionPerfil = () => {
           <option value="moda">Moda</option>
         </select>
 
+        <label className={styles.label}>Avatar (JPG o PNG)</label>
+        <input
+          className={styles.input}
+          type="file"
+          accept="image/jpeg, image/png"
+          onChange={handleFileChange}
+        />
+
+        <input
+          className={styles.input}
+          type="text"
+          name="instagram"
+          placeholder="Instagram (URL)"
+          value={formData.instagram}
+          onChange={handleChange}
+        />
+
+        <input
+          className={styles.input}
+          type="text"
+          name="facebook"
+          placeholder="Facebook (URL)"
+          value={formData.facebook}
+          onChange={handleChange}
+        />
+
+        <button className={styles.button} type="submit">
+          Guardar Cambios
+        </button>
         
       </form>
     </div>
