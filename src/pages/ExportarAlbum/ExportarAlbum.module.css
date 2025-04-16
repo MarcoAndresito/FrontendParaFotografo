@@ -16,3 +16,21 @@
   width: 90%;
   max-width: 600px; /* Un ancho máximo un poco mayor */
 }
+
+.exportTitle {
+  font-size: 2.8em; /* Título ligeramente más grande */
+  color: #333;
+  margin-bottom: 40px; /* Más espacio debajo del título */
+  text-align: center;
+  font-weight: 500; /* Un peso de fuente más ligero para elegancia */
+}
+
+.uploadArea {
+  border: 2px dashed #a6cfff; /* Un azul más suave para el borde */
+  border-radius: 12px; /* Bordes más redondeados */
+  padding: 50px; /* Más espacio interior */
+  text-align: center;
+  margin-bottom: 30px;
+  color: #555; /* Texto un poco más oscuro */
+  background-color: #f0f8ff; /* Un azul muy claro de fondo */
+}
