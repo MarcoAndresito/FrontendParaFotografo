@@ -69,6 +69,15 @@ const EdicionPerfil = () => {
         />
         {emailError && <p className={styles.error}>{emailError}</p>}
 
+        <input
+          className={styles.input}
+          type="text"
+          name="sitioWeb"
+          placeholder="URL de tu sitio web"
+          value={formData.sitioWeb}
+          onChange={handleChange}
+        />
+
         
       </form>
     </div>
