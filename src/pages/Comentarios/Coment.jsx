@@ -17,6 +17,7 @@ const COMENT = () => {
   const [lastCommentTime, setLastCommentTime] = useState(0);
   const [error, setError] = useState('');
   const [lastComment, setLastComment] = useState('');
+  const [comments, setComments] = useState([]);
   
 
   const handleTextChange = (e) => {
@@ -116,8 +117,18 @@ const COMENT = () => {
     setError('');
     alert("Comentario enviado correctamente");
 
+    setComments(prev => [...prev, { text, images }]);
+
     setText('');
     setImages([]);
+  };
+
+  const handleDeleteComment = (index) => {
+    setComments(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const handleReportComment = (index) => {
+    alert("Comentario reportado. Será revisado por un moderador.");
   };
 
 
@@ -152,6 +163,34 @@ const COMENT = () => {
     <button className="coment-button">
         Comentar
     </button>
+
+    <div className="coment-list">
+        {comments.map((coment, index) => (
+          <div key={index} className="coment-item">
+            <p dangerouslySetInnerHTML={{ __html: coment.text }}></p>
+
+            {coment.images.length > 0 && (
+              <div className="coment-image-preview">
+                {coment.images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={URL.createObjectURL(img)}
+                    alt="preview"
+                    className="coment-image-thumb"
+                  />
+                ))}
+              </div>
+            )}
+
+            <button onClick={() => handleReportComment(index)} className="coment-button-report">
+              🚩 Reportar
+            </button>
+            <button onClick={() => handleDeleteComment(index)} className="coment-button-delete">
+              🗑 Eliminar
+            </button>
+          </div>
+        ))}
+      </div>
 
 
     </div>
