@@ -1,3 +1,5 @@
+// Goerge Mahonri Soto Barrientos
+
 import React, { useState } from 'react';
 import './Coment.css'; 
 
