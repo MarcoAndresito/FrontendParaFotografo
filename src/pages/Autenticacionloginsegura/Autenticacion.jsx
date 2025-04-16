@@ -22,22 +22,49 @@ const Autenticacion = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Correo"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {error && <p className="error">{error}</p>}
-        <button type="submit">Entrar</button>
-      </form>
+    <div className="instagram-container">
+      <main className="instagram-content">
+        <div className="phones-container">
+          <div className="phones-image">Photography</div>
+        </div>
+
+        <div className="form-container">
+          <div className="form-card">
+            <div className="logo-container">
+              <div className="logo-wrapper">
+                <span className="logo-text">FrontEnd</span>
+              </div>
+            </div>
+
+            <form className="form-wrapper" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="email"
+                  className={`form-input`}
+                  placeholder="Email address"
+                  aria-label="Email address"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  name="password"
+                  className={`form-input`}
+                  placeholder="Password"
+                  aria-label="Password"
+                />
+              </div>
+              <button type="submit" className="submit-button">
+                Iniciar sesion
+              </button>
+
+            </form>
+          </div>
+
+        </div>
+      </main>
+
     </div>
   );
 };
