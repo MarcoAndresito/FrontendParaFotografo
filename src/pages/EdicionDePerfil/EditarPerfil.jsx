@@ -12,6 +12,13 @@ const EdicionPerfil = () => {
     facebook: ""
   });
 
+  const [emailError, setEmailError] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
 }
 
 export default EdicionPerfil;
