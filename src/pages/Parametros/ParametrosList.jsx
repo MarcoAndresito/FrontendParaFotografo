@@ -3,8 +3,12 @@ import styles from './Parametros.module.css';
 import { useEffect } from "react";
 import { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
+
   const ParametrosList = () => {
 
+    const navigate = useNavigate();
     const [modalVisible, setModalVisible] = useState(false);
     const [modalTipo, setModalTipo] = useState("");
     const [parametroSeleccionado, setParametroSeleccionado] = useState(null);
@@ -41,6 +45,9 @@ import { useState } from "react";
         setParametroSeleccionado(parametro);
         setModalTipo("editar");
         setModalVisible(true);
+    };
+    const handleRegistrarNuevoParametro = () => {
+        navigate("/Parametros/new");
     };
 
     const confirmarEdicion = () => {
@@ -94,6 +101,7 @@ import { useState } from "react";
     return (
       <div className={styles.contenedor}>
         <h2 className={styles.titulo}>Lista de Parámetros</h2>
+        <button className={`${styles.boton} ${styles.ver}`} onClick={() => handleRegistrarNuevoParametro()} >Registrar Parametros</button> <br></br>
         <table className={styles.tabla}>
             <thead>
             <tr>
