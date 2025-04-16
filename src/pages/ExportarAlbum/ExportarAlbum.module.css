@@ -34,3 +34,26 @@
   color: #555; /* Texto un poco más oscuro */
   background-color: #f0f8ff; /* Un azul muy claro de fondo */
 }
+
+.uploadArea p {
+  font-size: 1.1em; /* Tamaño de fuente un poco mayor */
+  margin-bottom: 20px;
+}
+
+.selectFileButton {
+  background-color: #fff;
+  color: #2979ff; /* Un azul más vivo */
+  border: 1px solid #2979ff;
+  padding: 12px 24px;
+  border-radius: 10px; /* Bordes más redondeados */
+  cursor: pointer;
+  font-weight: 600; /* Un peso de fuente un poco más fuerte */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  font-size: 1em;
+}
+
+.selectFileButton:hover {
+  background-color: #2979ff;
+  color: #fff;
+  border-color: #1e60c2; /* Un tono más oscuro al hacer hover */
+}
