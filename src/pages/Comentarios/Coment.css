@@ -1,0 +1,20 @@
+h1 {
+    color: #031026;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  h2 {
+    color: #468189;
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  
+  h3 {
+    color: #77ACA2;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
