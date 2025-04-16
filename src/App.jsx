@@ -9,6 +9,7 @@ import UploadPhoto from "./pages/UploadPhoto";  // Importar UploadPhoto desde pa
 import RegisterUser from "./pages/RegisterUser/RegisterUser";
 import viteLogo from "/vite.svg";
 import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
+import ExportarAlbum from "./pages/ExportarAlbum/ExportarAlbum";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Link to="/RegisterUser">Registro de usuario</Link>
         
         <Link to="/Autenticacion">Autenticación Segura</Link>
+        <Link to="/ExportarAlbum">Exportar Album</Link> {/* Enlace a la página de carga de fotos */}
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -35,6 +37,7 @@ const App = () => {
         <Route path="/uploadphoto" element={<UploadPhoto />} /> {/* Ruta correcta para UploadPhoto */}
         <Route path="/RegisterUser" element= {<RegisterUser/>}/>
         <Route path="/Autenticacion" element={<Autenticacion />} />
+        <Route path="/ExportarAlbum" element={<ExportarAlbum />} /> {/* Ruta correcta para ExportarAlbum */}
       </Routes>
     </BrowserRouter>
   );
