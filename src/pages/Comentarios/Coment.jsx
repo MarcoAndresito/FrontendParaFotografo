@@ -160,7 +160,7 @@ const COMENT = () => {
         </div>
       )}
     {error && <div className="coment-error">{error}</div>}
-    <button className="coment-button">
+    <button onClick={handleSubmit} className="coment-button">
         Comentar
     </button>
 
