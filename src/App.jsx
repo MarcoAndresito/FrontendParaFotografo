@@ -14,6 +14,7 @@ import UploadPhoto from "./pages/UploadPhoto"; // Importar UploadPhoto desde pag
 
 // Parametros 
 import ParametrosList from "./pages/Parametros/ParametrosList";
+import ParametrosAdd from "./pages/Parametros/ParametrosAdd";
 
 
 import viteLogo from "/vite.svg";
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/Parametros" element={<ParametrosList />} />
         <Route path="/Productos/:id" element={<ProductosUpd />} />
         <Route path="/Productos/new" element={<ProductosAdd />} />
+        <Route path="/Parametros/new" element={<ParametrosAdd />} />
         <Route path="/ConfigurarAlbum" element={<ConfigurarAlbum />} />
       </Routes>
     </BrowserRouter>
