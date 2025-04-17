@@ -59,8 +59,7 @@ const COMENT = () => {
   };
 
   const isRichTextValid = (text) => {
-    const richTextPattern = /<b>|<i>|<a href="[^"]+">.*?<\/a>/;
-    return richTextPattern.test(text) || text === '';
+    return true;
   };
 
   const validateMentions = (text) => {
