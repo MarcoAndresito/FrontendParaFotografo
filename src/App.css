@@ -104,9 +104,10 @@ button:active {
 
 .image-item img {
   width: 200px;
-  height: 200px;
+  height: auto;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 5px;
+  display: block;
 }
 
 /* Zona para arrastrar imágenes */
@@ -125,6 +126,11 @@ button:active {
 /* Contenedor del progreso */
 .upload-progress {
   text-align: center;
+}
+
+.upload-progress p {
+  margin-bottom: 0.5rem;
+  color: black; 
 }
 
 .upload-progress progress {
@@ -170,4 +176,5 @@ button:active {
 
 .notification.error {
   background-color: #e53935;
+  color: white;
 }
