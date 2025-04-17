@@ -1,32 +1,148 @@
+import { useState } from "react";
 import styles from "./RegisterUser.module.css";
 
-
 const RegisterUser = () => {
-    return (
-        <div className={styles.container}>
-            <form action="" className={styles.form}>
-                <h2  className={styles.titulo}>REGISTRO DE USUARIO</h2>
-                <label className={styles.label} htmlFor="">Nombre</label>
+  const [formData, setFormData] = useState({
+    Nombre: "",
+    Correo: "",
+    Contraseña: "",
+    ConfirmarContraseña: ""
+  });
 
-                <input className={styles.input} type="text" placeholder="Escriba su nombre" />
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
-                <label className={styles.label} htmlFor="">Correo</label>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-                <input className={styles.input} type="email" name="" placeholder="Escriba su correo" id="" />
+    if (formData.Contraseña !== formData.ConfirmarContraseña) {
+        showModal("Las contraseñas no coinciden", "error");
+      return;
+    }
 
-                <label className={styles.label} htmlFor="">Contraseña</label>
+    try {
+      const response = await fetch("https://localhost:7062/api/RegistroUsuario", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          Nombre: formData.Nombre,
+          Correo: formData.Correo,
+          Contraseña: formData.Contraseña
+        })
+      });
 
-                <input className={styles.input} type="password" name="" placeholder="Escriba su contraseña" id="" />
+      const data = await response.json();
 
-                <label className={styles.label} htmlFor="">Repita su contraseña</label>
+      if (response.ok) {
+        showModal("Usuario registrado correctamente", "registroExitoso");
+        console.log(data);
+        // limpiar formulario
+        setFormData({
+          Nombre: "",
+          Correo: "",
+          Contraseña: "",
+          ConfirmarContraseña: ""
+        });
+      } else {
+        showModal("Error al registrar: " + (data?.message || data), "error");
+      }
+    } catch (error) {
+      console.error("Error de conexión:", error);
+      alert("Error al conectar con el servidor", "error");
+    }
+  };
 
-                <input className={styles.input} type="password" name="" placeholder="Confirme su contraseña" id="" />
+  const [modal, setModal] = useState({
+    visible: false,
+    message: "",
+    type: "error", "error": "registroExitoso"
+  });
+  const showModal = (message, type = "info") => {
+    setModal({
+      visible: true,
+      message,
+      type
+    });
+  };
 
-                <button className={styles.buton} type="submit">Registrarse</button>
-                
-            </form>
-        </div>
-    );
+
+
+  
+  
+
+  return (
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <h2 className={styles.titulo}>REGISTRO DE USUARIO</h2>
+
+        <label className={styles.label}>Nombre</label>
+        <input
+          className={styles.input}
+          type="text"
+          name="Nombre"
+          value={formData.Nombre}
+          onChange={handleChange}
+          placeholder="Escriba su nombre"
+          required
+        />
+
+        <label className={styles.label}>Correo</label>
+        <input
+          className={styles.input}
+          type="email"
+          name="Correo"
+          value={formData.Correo}
+          onChange={handleChange}
+          placeholder="Escriba su correo"
+          required
+        />
+
+        <label className={styles.label}>Contraseña</label>
+        <input
+          className={styles.input}
+          type="password"
+          name="Contraseña"
+          value={formData.Contraseña}
+          onChange={handleChange}
+          placeholder="Escriba su contraseña"
+          required
+        />
+
+        <label className={styles.label}>Repita su contraseña</label>
+        <input
+          className={styles.input}
+          type="password"
+          name="ConfirmarContraseña"
+          value={formData.ConfirmarContraseña}
+          onChange={handleChange}
+          placeholder="Confirme su contraseña"
+          required
+        />
+
+        <button className={styles.buton} type="submit">
+          Registrarse
+        </button>
+      </form>
+
+         {modal.visible && (
+            <div className={styles.modalOverlay}>
+            <div className={`${styles.modal} ${styles[modal.type]}`}>
+                <p>{modal.message}</p>
+                <button className={styles.btn} onClick={() => setModal({ ...modal, visible: false })}>
+                Cerrar
+                </button>
+            </div>
+            </div>
+        )}
+  
+    </div>
+  );
 };
 
-export default RegisterUser; 
+export default RegisterUser;
