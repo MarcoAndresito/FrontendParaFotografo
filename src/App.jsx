@@ -18,6 +18,8 @@ import ParametrosAdd from "./pages/Parametros/ParametrosAdd";
 
 
 import viteLogo from "/vite.svg";
+import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
+import COMENT from "./pages/Comentarios/Coment";
 
 const App = () => {
   return (
@@ -36,6 +38,7 @@ const App = () => {
         {/* Enlace a la página de carga de fotos */}
         <Link to="/RegisterUser">Registro de usuario</Link>
         <Link to="/Autenticacion">Autenticación Segura</Link>
+        <Link to="/comentarios">Comentarios</Link>
         <Link to="/Productos">Productos</Link>
         <Link to="/Parametros">Parametros</Link>
         <Link to="/ConfigurarAlbum">Configurar Álbum</Link>
@@ -48,6 +51,7 @@ const App = () => {
         {/* Ruta correcta para UploadPhoto */}
         <Route path="/RegisterUser" element={<RegisterUser />} />
         <Route path="/Autenticacion" element={<Autenticacion />} />
+        <Route path="/comentarios" element={<COMENT />} />
         <Route path="/Productos" element={<ProductosList />} />
         <Route path="/Parametros" element={<ParametrosList />} />
         <Route path="/Productos/:id" element={<ProductosUpd />} />
