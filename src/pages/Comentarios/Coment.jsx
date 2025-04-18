@@ -11,7 +11,7 @@ const COMMENT_COOLDOWN_MS = 10000;
 const MAX_TEXT_LENGTH = 500;
 const existingUsers = ['@juan', '@maria', '@admin'];
 
-const COMENT = () => {
+const Coment = () => {
   const [text, setText] = useState('');
   const [images, setImages] = useState([]);
   const [lastCommentTime, setLastCommentTime] = useState(0);
@@ -196,4 +196,4 @@ const COMENT = () => {
   );
 };
 
-export default COMENT;
+export default Coment;

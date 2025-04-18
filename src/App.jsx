@@ -18,9 +18,8 @@ import ParametrosAdd from "./pages/Parametros/ParametrosAdd";
 
 
 import viteLogo from "/vite.svg";
-import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
 import ExportarAlbum from "./pages/ExportarAlbum/ExportarAlbum";
-import COMENT from "./pages/Comentarios/Coment";
+import Coment from "./pages/Comentarios/Coment";
 import Comentarios from "./pages/Comentarios/Comentarios";
 import ModComentarios from "./pages/Comentarios/ModComentarios";
 import Moderador from "./pages/Comentarios/Moderador";
@@ -59,7 +58,7 @@ const App = () => {
         <Route path="/RegisterUser" element={<RegisterUser />} />
         <Route path="/Autenticacion" element={<Autenticacion />} />
         <Route path="/ExportarAlbum" element={<ExportarAlbum />} /> {/* Ruta correcta para ExportarAlbum */}
-        <Route path="/comentarios" element={<COMENT />} />
+        <Route path="/comentarios" element={<Coment />} />
         <Route path="/Productos" element={<ProductosList />} />
         <Route path="/Parametros" element={<ParametrosList />} />
         <Route path="/Productos/:id" element={<ProductosUpd />} />
