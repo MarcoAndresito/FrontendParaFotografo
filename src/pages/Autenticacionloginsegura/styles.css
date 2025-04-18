@@ -1,21 +1,203 @@
-/* src/styles.css */
-
-.login-container {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.login-containerr {
   max-width: 360px;
   margin: 80px auto;
   padding: 2rem;
-  background: rgba(0, 0, 0, 0.8); /* Fondo semitransparente oscuro */
+  background: rgba(27, 2, 253, 0.8); /* Fondo semitransparente oscuro */
   border-radius: 8px;
   box-shadow: 0 0px 35px rgba(0, 0, 0, 0.4); /* Sombra más definida */
 }
 
-.login-container h2 {
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fafafa;
+  color: #262626;
+}
+
+.instagram-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #0d3136;
+}
+
+.instagram-content {
+  display: flex;
+  max-width: 935px;
+  width: 100%;
+  margin: 32px auto 0;
+  padding-bottom: 32px;
+}
+
+.phones-container {
+  display: none;
+  align-items: center;
+  margin-right: 32px;
+  flex-basis: 380px;
+}
+
+@media (min-width: 876px) {
+  .phones-container {
+    display: flex;
+  }
+}
+
+.phones-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+  filter: brightness(0.5);
+}
+
+.form-container {
+  max-width: 350px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.form-card {
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px 0;
+}
+
+.logo-container {
+  margin: 22px auto 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.form-wrapper {
+  margin-top: 24px;
+  padding: 0 40px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  padding: 9px 8px;
+  background-color: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #a8a8a8;
+}
+
+.form-input.error {
+  border-color: #ed4956;
+}
+
+.error-message {
+  color: #ed4956;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 4px 0;
+  text-align: left;
+}
+
+.submit-button {
+  width: 100%;
+  background-color: #0c2a43;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 7px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.submit-button:hover {
+  background-color: #0c2030;
+}
+
+.submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 10px 0 18px;
+}
+
+.divider-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #dbdbdb;
+}
+
+.divider-text {
+  color: #8e8e8e;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 18px;
+  text-transform: uppercase;
+}
+
+.forgot-password {
+  color: #00376b;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 12px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+}
+
+.signup-card {
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 1px;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.login-containerr h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: #ffffff; /* Texto blanco */
 }
 
-.login-container input {
+.login-containerr input {
   display: block;
   width: 100%;
   margin-bottom: 1rem;
@@ -27,12 +209,12 @@
   color: #ffffff; /* Texto blanco en los inputs */
 }
 
-.login-container input:focus {
+.login-containerr input:focus {
   border-color: #4caf50; /* Color verde al enfocar */
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.8); /* Efecto de sombra verde */
 }
 
-.login-container button {
+.login-containerr button {
   width: 100%;
   padding: 0.6rem;
   font-size: 1rem;
@@ -43,13 +225,6 @@
   cursor: pointer;
 }
 
-.login-container button:hover {
+.login-containerr button:hover {
   background-color: #388e3c; /* Botón verde oscuro al pasar el cursor */
-}
-
-.error {
-  color: #ff5722; /* Texto de error rojo anaranjado */
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  text-align: center;
 }
