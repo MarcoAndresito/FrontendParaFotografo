@@ -20,6 +20,9 @@ import ParametrosAdd from "./pages/Parametros/ParametrosAdd";
 import viteLogo from "/vite.svg";
 import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
 import COMENT from "./pages/Comentarios/Coment";
+import Comentarios from "./pages/Comentarios/Comentarios";
+import ModComentarios from "./pages/Comentarios/ModComentarios";
+import Moderador from "./pages/Comentarios/Moderador";
 
 const App = () => {
   return (
@@ -42,6 +45,8 @@ const App = () => {
         <Link to="/Productos">Productos</Link>
         <Link to="/Parametros">Parametros</Link>
         <Link to="/ConfigurarAlbum">Configurar Álbum</Link>
+        <Link to="/Comentarios">Comentarios</Link>
+        
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -58,6 +63,9 @@ const App = () => {
         <Route path="/Productos/new" element={<ProductosAdd />} />
         <Route path="/Parametros/new" element={<ParametrosAdd />} />
         <Route path="/ConfigurarAlbum" element={<ConfigurarAlbum />} />
+        <Route path="/Comentarios" element={<Comentarios />} />
+        <Route path="/ModComentarios" element={<ModComentarios />} />
+        <Route path="/Moderador" element={<Moderador />} />
       </Routes>
     </BrowserRouter>
   );
