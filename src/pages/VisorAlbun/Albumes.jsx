@@ -21,3 +21,20 @@ const Albumes = () => {
     }, []);
   
     if (loading) return <p>Cargando álbumes...</p>;
+
+    return (
+        <div className={styles.container}>
+          <h2>Álbumes</h2>
+          <div className={styles.grid}>
+            {albums.map((album) => (
+              <Link key={album.id} to={`/album/${album.id}`} className={styles.card}>
+                <img src={album.cover} alt={album.name} />
+                <p>{album.name}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      );
+    };
+    
+    export default Albumes;
