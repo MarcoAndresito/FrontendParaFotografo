@@ -18,12 +18,71 @@ nav {
         text-decoration: none;
         margin-right: 1rem;
         font-weight: bold;
+        border-radius: 5px;
+        padding: 0.5rem 0.8rem;
+        transform: scale(1); /* Escala normal por defecto */
+        transition: transform 0.2s ease-in-out; /* Transición de 0.2 segundos */
     }
 
         nav a:hover {
-            /* quitando subrayado al pasar por el menu */
+            border-radius: 5px;
+            /* Hacemos q crezca ligeramente al hacer hover */
+            transform: scale(1.02); /* Escala al 102% */
+            
         }
 
+nav a.menu-inicio:hover {
+    background-color: #5cb85c; /*  color verde */
+}
+nav a.menu-acerca:hover {
+   background-color: #f0ad4e; /*  color naranja */
+}
+
+nav a.menu-login:hover {
+    background-color: #d9534f; /* color rojo */  
+}
+
+nav a.menu-album:hover {
+    background-color: #5bc0de; /* color celeste */
+}
+nav a.menu-registro:hover {
+    background-color: #8e44ad; /* color morado */
+}
+
+nav a.menu-autenticacion:hover {
+    background-color: #c0392b; /* Otro  rojo */
+    
+}
+
+nav a.menu-exportar:hover {
+    background-color: #16a085; /* color turquesa */
+ 
+}
+
+nav a.menu-comentarios:hover,
+av a.menu-comentarios-duplicado:hover {
+    background-color: #2980b9; /* color azul */
+    
+}
+
+nav a.menu-productos:hover {
+    background-color: #f39c12; /* Otro  naranja */
+    
+}
+
+nav a.menu-parametros:hover {
+   background-color: #95a5a6; /* color gris */
+    
+}
+
+nav a.menu-configurar-album:hover {
+    background-color: #34495e; /* Otro azul oscuro */
+  
+}
+ nav a.menu-comentarios:hover,
+ nav a.menu-comentarios-duplicado:hover {
+ background-color: #2980b9; /* Ejemplo de color azul */
+        }
 h1 {
     text-align: center;
     margin-top: 2rem;
