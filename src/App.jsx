@@ -1,7 +1,7 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
-import About from "./pages/About";
+import About from "./pages/AcercaDe/About";
 import Home from "./pages/Home";
 import UploadPhoto from "./pages/UploadPhoto"; // Importar UploadPhoto desde pages
 
