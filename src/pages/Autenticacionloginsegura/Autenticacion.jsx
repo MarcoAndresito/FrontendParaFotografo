@@ -79,7 +79,7 @@ const Autenticacion = () => {
     <div className="auth-container">
       <main className="auth-content">
         <div className="phones-container">
-          <img className="phones-image" src="./src/assets/banner.jpg" alt="" />
+          <img className="phones-image" src="./src/assets/auten.jpg" alt="" />
         </div>
 
         <div className="form-container">
