@@ -1,105 +1,97 @@
 import React, { useState } from "react";
-import styles from "./ConfigurarAlbum.module.css";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import styles from "./ConfigurarAlbum.module.css"; // Importa el archivo CSS
 
 const ConfigurarAlbum = () => {
   const [albumName, setAlbumName] = useState("");
-  const [description, setDescription] = useState("");
-  const [images, setImages] = useState([]);
+  const [albumDescription, setAlbumDescription] = useState("");
+  const [ownerName, setOwnerName] = useState("");
+  const [isPublic, setIsPublic] = useState(false); // Estado para público/privado
+  const [photos, setPhotos] = useState([
+    "https://img.freepik.com/foto-gratis/familia-pequeno-hijo-parque-otono_1157-22273.jpg?semt=ais_hybrid&w=740",
+    "https://img.freepik.com/foto-gratis/retrato-cuerpo-entero-familia-sonriente-nino_171337-10331.jpg",
+    "https://img.freepik.com/foto-gratis/familia-vista-frontal-pasando-rato-embarcadero_23-2150558016.jpg",
+    "https://img.freepik.com/foto-gratis/padres-felices-hijo-naturaleza_23-2148201539.jpg?semt=ais_hybrid&w=740",
+    "https://img.freepik.com/foto-gratis/padres-felices-hijo-naturaleza_23-2148201530.jpg?semt=ais_hybrid&w=740",
+  ]);
 
-  const handleImageUpload = (event) => {
-    const files = Array.from(event.target.files);
-    const imagePreviews = files.map((file) => ({
-      file,
-      preview: URL.createObjectURL(file),
-    }));
-    setImages((prevImages) => [...prevImages, ...imagePreviews]);
+  const handleInputChange = (setter) => (e) => {
+    setter(e.target.value);
   };
 
-  const handleRemoveImage = (indexToRemove) => {
-    setImages((prevImages) =>
-      prevImages.filter((_, index) => index !== indexToRemove)
-    );
-  };
-
-  const handleSave = () => {
-    const albumData = {
-      name: albumName,
-      description,
-      images: images.map((image) => image.file), // Solo los archivos
-    };
-    console.log("Album saved:", albumData);
-    // Aquí puedes enviar los datos al backend
+  const responsive = {
+    desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
+    tablet: { breakpoint: { max: 1024, min: 464 }, items: 2 },
+    mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
   };
 
   return (
     <div className={styles.container}>
-      <h1>Configurar Álbum</h1>
-      <div style={{ marginBottom: "15px" }}>
-        <label>
+      <h1 className={styles.h1}>Configurar Álbum</h1>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>
           Nombre del Álbum:
           <input
             type="text"
             value={albumName}
-            onChange={(e) => setAlbumName(e.target.value)}
-            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+            onChange={handleInputChange(setAlbumName)}
+            className={styles.input}
           />
         </label>
       </div>
-      <div style={{ marginBottom: "15px" }}>
-        <label>
-          Descripción:
+      <div className={styles.formGroup}>
+        <label className={styles.label}>
+          Descripción del Álbum:
           <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+            value={albumDescription}
+            onChange={handleInputChange(setAlbumDescription)}
+            className={styles.textarea}
           />
         </label>
       </div>
-      <div style={{ marginBottom: "15px" }}>
-        <label>
-          Subir Imágenes:
+      <div className={styles.formGroup}>
+        <label className={styles.label}>
+          Nombre del Propietario:
           <input
-            type="file"
-            multiple
-            onChange={handleImageUpload}
-            style={{ marginTop: "5px", padding: "8px", width: "100%" }}
+            type="text"
+            value={ownerName}
+            onChange={handleInputChange(setOwnerName)}
+            className={styles.input}
           />
         </label>
-        <div style={{ marginTop: "10px" }}>
-          {images.length > 0 && (
-            <ul
-              style={{
-                width: "100%",
-                listStyle: "none",
-                display: "flex",
-                gap: "10px",
-                flexWrap: "wrap", // Permite que los elementos se ajusten a una nueva fila
-              }}
-            >
-              {images.map((image, index) => (
-                <li
-                  key={index}
-                  style={{ marginBottom: "10px", width: "100px" }}
-                >
-                  <img
-                    src={image.preview}
-                    alt={`Preview ${index}`}
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      marginRight: "10px",
-                    }}
-                  />
-                  <button onClick={() => handleRemoveImage(index)}>
-                    Quitar
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
       </div>
-      <button onClick={handleSave}>Guardar Álbum</button>
+      <div className={styles.formGroup}>
+        <label className={styles.checkboxLabel}>
+          <input
+            type="checkbox"
+            checked={isPublic}
+            onChange={() => setIsPublic(!isPublic)}
+            className={styles.checkbox}
+          />
+          ¿Hacer el álbum público?
+        </label>
+      </div>
+      <div className={styles.albumStatus}>
+        <p>
+          Estado del álbum: <strong>{isPublic ? "Público" : "Privado"}</strong>
+        </p>
+      </div>
+
+      <div className={styles.carouselContainer}>
+        <h2>Fotos del Álbum</h2>
+        <Carousel responsive={responsive}>
+          {photos.map((photo, index) => (
+            <div key={index} className={styles.carouselItem}>
+              <img
+                src={photo}
+                alt={`Foto ${index + 1}`}
+                className={styles.carouselItemImg}
+              />
+            </div>
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 };
