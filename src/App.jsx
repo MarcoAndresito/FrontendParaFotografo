@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 import About from "./pages/About";
@@ -12,7 +12,7 @@ import ProductosUpd from "./pages/Productos/ProductosUpd";
 import RegisterUser from "./pages/RegisterUser/RegisterUser";
 import UploadPhoto from "./pages/UploadPhoto"; // Importar UploadPhoto desde pages
 
-// Parametros 
+// Parametros
 import ParametrosList from "./pages/Parametros/ParametrosList";
 import ParametrosAdd from "./pages/Parametros/ParametrosAdd";
 
@@ -33,19 +33,81 @@ const App = () => {
                 </a>
                 <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
                     <img src={reactLogo} className="logo react" alt="React logo" />
-                    </a>
-                <Link to="/" className="menu-inicio">Inicio</Link>
-                <Link to="/about" className="menu-acerca">Acerca de</Link>
-                <Link to="/login" className="menu-login">Login</Link>
-                <Link to="/uploadphoto" className="menu-album">Álbum</Link>
-                <Link to="/RegisterUser" className="menu-registro">Registro de usuario</Link>
-                <Link to="/Autenticacion" className="menu-autenticacion">Autenticación Segura</Link>
-                <Link to="/ExportarAlbum" className="menu-exportar">Exportar Album</Link>
-                <Link to="/comentarios" className="menu-comentarios">Comentarios</Link>
-                <Link to="/Productos" className="menu-productos">Productos</Link>
-                <Link to="/Parametros" className="menu-parametros">Parametros</Link>
-                <Link to="/ConfigurarAlbum" className="menu-configurar-album">Configurar Álbum</Link>
-                <Link to="/Comentarios" className="menu-comentarios-duplicado">Comentarios</Link>
+                </a>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Inicio
+                </NavLink>
+                <NavLink
+                    to="/about"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Acerca de
+                </NavLink>
+                <NavLink
+                    to="/login"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Login
+                </NavLink>
+                <NavLink
+                    to="/uploadphoto"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Álbum
+                </NavLink>{" "}
+                {/* Enlace a la página de carga de fotos */}
+                <NavLink
+                    to="/RegisterUser"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Registro de usuario
+                </NavLink>
+                <NavLink
+                    to="/Autenticacion"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Autenticación Segura
+                </NavLink>
+                <NavLink
+                    to="/ExportarAlbum"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Exportar Album
+                </NavLink>{" "}
+                {/* Enlace a la página de carga de fotos */}
+                <NavLink
+                    to="/comentarios"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Comentarios
+                </NavLink>
+                <NavLink
+                    to="/Productos"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Productos
+                </NavLink>
+                <NavLink
+                    to="/Parametros"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Parametros
+                </NavLink>
+                <NavLink
+                    to="/ConfigurarAlbum"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Configurar Álbum
+                </NavLink>
+                <NavLink
+                    to="/Comentarios"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Comentarios
+                </NavLink>
             </nav>
 
             <Routes>
@@ -56,7 +118,8 @@ const App = () => {
                 {/* Ruta correcta para UploadPhoto */}
                 <Route path="/RegisterUser" element={<RegisterUser />} />
                 <Route path="/Autenticacion" element={<Autenticacion />} />
-                <Route path="/ExportarAlbum" element={<ExportarAlbum />} /> {/* Ruta correcta para ExportarAlbum */}
+                <Route path="/ExportarAlbum" element={<ExportarAlbum />} />{" "}
+                {/* Ruta correcta para ExportarAlbum */}
                 <Route path="/comentarios" element={<Coment />} />
                 <Route path="/Productos" element={<ProductosList />} />
                 <Route path="/Parametros" element={<ParametrosList />} />
