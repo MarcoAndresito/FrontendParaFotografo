@@ -1,0 +1,144 @@
+/* Home.css */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #2563EB;
+  padding: 1rem 2rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  background: transparent;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.nav-link:hover {
+  background: white;
+  color: #2563EB;
+}
+
+.register-button {
+  background: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: #2563EB;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.register-button:hover {
+  background: #f1f1f1;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: center;
+  color: white;
+  flex: 1;
+}
+
+.hero-image {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-text h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-button {
+  background-color: #2563EB;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.hero-button:hover {
+  background-color: #1D4ED8;
+}
+
+/* Features */
+.features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  background: white;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .features {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature img {
+  width: 80px;
+  margin-bottom: 1rem;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature p {
+  color: #6B7280;
+}
+
+/* Footer */
+.footer {
+  background-color: #2563EB;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
