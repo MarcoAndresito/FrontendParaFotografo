@@ -25,6 +25,7 @@ import Moderador from "./pages/Comentarios/Moderador";
 
 import Albumes from "./pages/VisorAlbun/Albumes";
 import Album from "./pages/VisorAlbun/Album";
+import AlbumListPage from "./pages/ListaAlbumes/AlbumList";
 
 const App = () => {
   return (
@@ -50,6 +51,7 @@ const App = () => {
         <Link to="/Comentarios">Comentarios</Link>
 
         <Link to="/albumes">Ver Álbumes</Link>
+        <Link to="/album-list">Lista de Álbumes</Link>
       </nav>
 
       <Routes>
@@ -72,6 +74,7 @@ const App = () => {
         <Route path="/Moderador" element={<Moderador />} />
         <Route path="/albumes" element={<Albumes />} />
         <Route path="/album/:id" element={<Album />} />
+        <Route path="/album-list" element={<AlbumListPage />} />
       </Routes>
     </BrowserRouter>
   );
