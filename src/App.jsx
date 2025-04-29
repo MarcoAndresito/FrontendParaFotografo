@@ -1,11 +1,10 @@
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
-import About from "./pages/About";
 import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
 import ConfigurarAlbum from "./pages/ConfigurarAlbum/ConfigurarAlbum";
+import About from "./pages/AcercaDe/About";
 import Home from "./pages/Home";
-import Login from "./pages/login";
 import ProductosAdd from "./pages/Productos/ProductosAdd";
 import ProductosList from "./pages/Productos/ProductosList";
 import ProductosUpd from "./pages/Productos/ProductosUpd";
@@ -23,6 +22,9 @@ import Coment from "./pages/Comentarios/Coment";
 import Comentarios from "./pages/Comentarios/Comentarios";
 import ModComentarios from "./pages/Comentarios/ModComentarios";
 import Moderador from "./pages/Comentarios/Moderador";
+
+import Albumes from "./pages/VisorAlbun/Albumes";
+import Album from "./pages/VisorAlbun/Album";
 
 const App = () => {
     return (

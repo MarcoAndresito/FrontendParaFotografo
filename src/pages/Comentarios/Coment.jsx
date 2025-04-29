@@ -163,26 +163,35 @@ const Coment = () => {
         Comentar
     </button>
 
-    <div className="coment-list">
+      <div className="coment-list">
         {comments.map((coment, index) => (
           <div key={index} className="coment-item">
-            <p dangerouslySetInnerHTML={{ __html: coment.text }}></p>
-
+            <div className="coment-header">
+              <img src="avatar.jpg" alt="Avatar" className="coment-avatar" />
+              <div className="coment-content">
+                <span className="coment-author">Amilcar RE</span>
+                <p
+                  className="coment-text"
+                  dangerouslySetInnerHTML={{ __html: coment.text }}
+                ></p>
+              </div>
+            </div>
+            
             {coment.images.length > 0 && (
               <div className="coment-image-preview">
                 {coment.images.map((img, idx) => (
                   <img
                     key={idx}
-                    src={URL.createObjectURL(img)}
+                    src={URL.createObjectURL(img) || "/placeholder.svg"}
                     alt="preview"
                     className="coment-image-thumb"
                   />
                 ))}
               </div>
             )}
-
+            
             <button onClick={() => handleReportComment(index)} className="coment-button-report">
-               Reportar
+              Reportar
             </button>
             <button onClick={() => handleDeleteComment(index)} className="coment-button-delete">
               Eliminar
