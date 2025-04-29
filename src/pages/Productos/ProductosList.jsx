@@ -1,52 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Productos.module.css";
+import { deleteAsync, getAllAsync } from "./Services";
 
 const ProductosList = () => {
   const [productos, setProductos] = useState([]);
 
-  const obtenerProductos = () => {
-    fetch("https://localhost:7062/api/Productos", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((data) => {
-        return data.json();
-      })
-      .then((data) => {
-        setProductos(data);
-      })
-      .catch((error) => {
-        console.log("error:", error);
-      });
-  };
-
-  const eliminar = async (id) => {
-    try {
-      const data = await fetch(`https://localhost:7062/api/Productos/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const json = await data.json();
-      console.log(json);
-      return true;
-    } catch (error) {
-      console.log("Error : ", error);
-      return false;
-    }
-  };
-
   const handleDelete = async (id) => {
-    await eliminar(id);
-    obtenerProductos();
+    await deleteAsync(id);
+    mostrar();
+  };
+
+  const mostrar = async () => {
+    const data = await getAllAsync();
+    setProductos(data);
   };
 
   useEffect(() => {
-    obtenerProductos();
+    mostrar();
   }, []);
 
   return (

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputText from "../../Components/Inputs/InputText";
+import { saveAsync } from "./Services";
 
 const ProductosAdd = () => {
   const navigate = useNavigate();
@@ -12,27 +13,9 @@ const ProductosAdd = () => {
     stock: 0,
   });
 
-  const guardar = async () => {
-    try {
-      const data = await fetch("https://localhost:7062/api/Productos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(producto),
-      });
-      const json = await data.json();
-      console.log(json);
-      return true;
-    } catch (error) {
-      console.log("Error : ", error);
-      return false;
-    }
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const resultado = await guardar();
+    const resultado = await saveAsync(producto);
     if (resultado) {
       navigate("/Productos");
     } else {
