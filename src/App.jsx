@@ -1,11 +1,10 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
-import About from "./pages/About";
 import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
 import ConfigurarAlbum from "./pages/ConfigurarAlbum/ConfigurarAlbum";
+import About from "./pages/AcercaDe/About";
 import Home from "./pages/Home";
-import Login from "./pages/login";
 import ProductosAdd from "./pages/Productos/ProductosAdd";
 import ProductosList from "./pages/Productos/ProductosList";
 import ProductosUpd from "./pages/Productos/ProductosUpd";
@@ -36,7 +35,6 @@ const App = () => {
         </a>
         <Link to="/">Inicio</Link>
         <Link to="/about">Acerca de</Link>
-        <Link to="/login">Login</Link>
         <Link to="/uploadphoto">Álbum</Link>{" "}
         {/* Enlace a la página de carga de fotos */}
         <Link to="/RegisterUser">Registro de usuario</Link>
@@ -52,7 +50,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="login" element={<Login />} />
         <Route path="/uploadphoto" element={<UploadPhoto />} />{" "}
         {/* Ruta correcta para UploadPhoto */}
         <Route path="/RegisterUser" element={<RegisterUser />} />

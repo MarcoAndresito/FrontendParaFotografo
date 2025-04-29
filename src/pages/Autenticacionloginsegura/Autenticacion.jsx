@@ -103,17 +103,17 @@ const Autenticacion = () => {
 
   const isFormValid = !errors.email && !errors.password && formData.email && formData.password
   return (
-    <div className="instagram-container">
-      <main className="instagram-content">
+    <div className="auth-container">
+      <main className="auth-content">
         <div className="phones-container">
-          <img className="phones-image" src="./src/assets/banner.jpg" alt="" />
+          <img className="phones-image" src="./src/assets/auten.jpg" alt="" />
         </div>
 
         <div className="form-container">
           <div className="form-card">
             <div className="logo-container">
               <div className="logo-wrapper">
-                <span className="logo-text">FrontEnd</span>
+                <span className="logo-text">Autenticacion</span>
               </div>
             </div>
 
