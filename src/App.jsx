@@ -23,6 +23,9 @@ import Comentarios from "./pages/Comentarios/Comentarios";
 import ModComentarios from "./pages/Comentarios/ModComentarios";
 import Moderador from "./pages/Comentarios/Moderador";
 
+import Albumes from "./pages/VisorAlbun/Albumes";
+import Album from "./pages/VisorAlbun/Album";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -45,6 +48,8 @@ const App = () => {
         <Link to="/Parametros">Parametros</Link>
         <Link to="/ConfigurarAlbum">Configurar Álbum</Link>
         <Link to="/Comentarios">Comentarios</Link>
+
+        <Link to="/albumes">Ver Álbumes</Link>
       </nav>
 
       <Routes>
@@ -65,6 +70,8 @@ const App = () => {
         <Route path="/Comentarios" element={<Comentarios />} />
         <Route path="/ModComentarios" element={<ModComentarios />} />
         <Route path="/Moderador" element={<Moderador />} />
+        <Route path="/albumes" element={<Albumes />} />
+        <Route path="/album/:id" element={<Album />} />
       </Routes>
     </BrowserRouter>
   );

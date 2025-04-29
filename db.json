@@ -1,0 +1,170 @@
+{
+    "albumes": [
+      {
+        "id": "bodas",
+        "name": "Bodas",
+        "cover": "https://picsum.photos/id/1011/400/300"
+      },
+      {
+        "id": "paisajes",
+        "name": "Paisajes",
+        "cover": "https://picsum.photos/id/1022/400/300"
+      },
+      {
+        "id": "naturaleza",
+        "name": "Naturaleza",
+        "cover": "https://picsum.photos/id/1025/400/300"
+      },
+      {
+        "id": "cristiano",
+        "name": "Cristiano",
+        "cover": "https://media.gettyimages.com/id/962792890/es/foto/kiev-ukraine-cristiano-ronaldo-of-real-madrid-lifts-the-uefa-champions-league-trophy-following.jpg?s=612x612&w=0&k=20&c=eCahX6yZc6fJTne5GYHfvVRWSjkSDvlN0ogrKlPJDCw="
+      }
+    ],
+    "fotos": [
+      {
+        "id": 1,
+        "albumId": "paisajes",
+        "url": "https://picsum.photos/id/1015/400/300",
+        "title": "Lago al amanecer"
+      },
+      {
+        "id": 2,
+        "albumId": "paisajes",
+        "url": "https://picsum.photos/id/1016/400/300",
+        "title": "Montañas nevadas"
+      },
+      {
+        "id": 3,
+        "albumId": "paisajes",
+        "url": "https://picsum.photos/id/1021/400/300",
+        "title": "Camino en otoño"
+      },
+      {
+        "id": 4,
+        "albumId": "paisajes",
+        "url": "https://picsum.photos/id/1035/400/300",
+        "title": "Costa rocosa"
+      },
+      {
+        "id": 5,
+        "albumId": "paisajes",
+        "url": "https://picsum.photos/id/1043/400/300",
+        "title": "Colinas verdes"
+      },
+      {
+        "id": 6,
+        "albumId": "bodas",
+        "url": "https://img.freepik.com/foto-gratis/novio-poniendo-anillo-dedo-novia_1157-338.jpg?t=st=1745241669~exp=1745245269~hmac=a209fcbe985a1070c966bb2fb61d70b4ce0786be5e6973ffeaadb4d24843074b&w=1380",
+        "title": "Novia en la playa"
+      },
+      {
+        "id": 7,
+        "albumId": "bodas",
+        "url": "https://source.unsplash.com/400x300/?wedding,groom",
+        "title": "Novio sonriente"
+      },
+      {
+        "id": 8,
+        "albumId": "bodas",
+        "url": "https://source.unsplash.com/400x300/?wedding,ceremony",
+        "title": "Ceremonia íntima"
+      },
+      {
+        "id": 9,
+        "albumId": "bodas",
+        "url": "https://source.unsplash.com/400x300/?wedding,couple",
+        "title": "Pareja feliz"
+      },
+      {
+        "id": 10,
+        "albumId": "bodas",
+        "url": "https://source.unsplash.com/400x300/?wedding,dance",
+        "title": "Primer baile"
+      },
+      {
+        "id": 11,
+        "albumId": "naturaleza",
+        "url": "https://picsum.photos/id/1020/400/300",
+        "title": "Bosque profundo"
+      },
+      {
+        "id": 12,
+        "albumId": "naturaleza",
+        "url": "https://picsum.photos/id/106/400/300",
+        "title": "Árbol solitario"
+      },
+      {
+        "id": 13,
+        "albumId": "naturaleza",
+        "url": "https://picsum.photos/id/1041/400/300",
+        "title": "Campo de flores"
+      },
+      {
+        "id": 14,
+        "albumId": "naturaleza",
+        "url": "https://picsum.photos/id/1040/400/300",
+        "title": "Río entre rocas"
+      },
+      {
+        "id": 15,
+        "albumId": "naturaleza",
+        "url": "https://picsum.photos/id/1039/400/300",
+        "title": "Sendero escondido"
+      },
+      {
+        "id": 16,
+        "albumId": "naturaleza",
+        "url": "https://picsum.photos/id/1056/400/300",
+        "title": "Cielo con nubes"
+      },
+      {
+        "id": 17,
+        "albumId": "paisajes",
+        "url": "https://picsum.photos/id/1065/400/300",
+        "title": "Valle al atardecer"
+      },
+      {
+        "id": 18,
+        "albumId": "bodas",
+        "url": "https://source.unsplash.com/400x300/?wedding,ring",
+        "title": "Intercambio de anillos"
+      },
+      {
+        "id": 19,
+        "albumId": "naturaleza",
+        "url": "https://picsum.photos/id/1084/400/300",
+        "title": "Cascada en la montaña"
+      },
+      {
+        "id": 20,
+        "albumId": "paisajes",
+        "url": "https://picsum.photos/id/1074/400/300",
+        "title": "Llanura inmensa"
+      },
+      {
+        "id": 21,
+        "albumId": "cristiano",
+        "url": "https://media.gettyimages.com/id/2158161907/es/foto/leipzig-germany-cristiano-ronaldo-of-portugal-acknowledges-the-fans-as-he-celebrates-victory.jpg?s=612x612&w=0&k=20&c=en2MuCkmWoGHESq9GWCybIu8HAxYn5BdmWBYxlkNeys=",
+        "title": "Cr7 "
+      },
+      {
+        "id": 22,
+        "albumId": "cristiano",
+        "url": "https://media.gettyimages.com/id/2156948404/es/foto/lisbon-portugal-cristiano-ronaldo-of-portugal-poses-for-a-portrait-during-the-portugal.jpg?s=612x612&w=0&k=20&c=FBDpuufCz6mX9LOi8PjRjwRFUV1oM-OgeNzBilGra90=",
+        "title": "Cr7 portugal"
+      },
+      {
+        "id": 23,
+        "albumId": "cristiano",
+        "url": "https://media.gettyimages.com/id/1734161904/es/foto/porto-portugal-cristiano-ronaldo-of-portugal-celebrates-after-scoring-the-teams-third-goal.jpg?s=612x612&w=0&k=20&c=WPhROyj3Ya3pjYT38Gwgh2TrI7iMUF5__EF_J9fuxmk=",
+        "title": "Cr7 Bajo la LLuvia"
+      },
+      {
+        "id": 24,
+        "albumId": "cristiano",
+        "url": "https://media.gettyimages.com/id/461443908/es/foto/zurich-switzerland-cristiano-ronaldo-of-portugal-and-real-madrid-receives-the-2014-fifa-ballon.jpg?s=612x612&w=0&k=20&c=48IkOvpv4qs4MLlQoiHbFnqTjOodV4WqTclJlaXykZI=",
+        "title": "cr7 Balon de oro"
+      }
+    ]
+  }
