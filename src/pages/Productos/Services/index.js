@@ -1,6 +1,8 @@
+const apiUrl = import.meta.env.URL_BACKEND;
+
 const deleteAsync = async (id) => {
   try {
-    const data = await fetch(`https://localhost:7062/api/Productos/${id}`, {
+    const data = await fetch(`${apiUrl}/api/Productos/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +19,7 @@ const deleteAsync = async (id) => {
 
 const getAllAsync = async () => {
   try {
-    const data = await fetch("https://localhost:7062/api/Productos", {
+    const data = await fetch(`${apiUrl}/api/Productos`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +35,7 @@ const getAllAsync = async () => {
 
 const getByIdAsync = async (id) => {
   try {
-    const data = await fetch(`https://localhost:7062/api/Productos/${id}`, {
+    const data = await fetch(`${apiUrl}/api/Productos/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -49,16 +51,13 @@ const getByIdAsync = async (id) => {
 
 const editAsync = async (producto) => {
   try {
-    const data = await fetch(
-      `https://localhost:7062/api/Productos/${producto.id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(producto),
-      }
-    );
+    const data = await fetch(`${apiUrl}/api/Productos/${producto.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(producto),
+    });
     const json = await data.json();
     console.log(json);
     return true;
@@ -70,7 +69,7 @@ const editAsync = async (producto) => {
 
 const saveAsync = async (producto) => {
   try {
-    const data = await fetch("https://localhost:7062/api/Productos", {
+    const data = await fetch(`${apiUrl}/api/Productos`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

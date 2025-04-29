@@ -5,6 +5,13 @@
   padding: 2rem;
 }
 
+.btn {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #1e7e34;
+  color: #000;
+}
+
 .title {
   font-size: 2em;
   margin-bottom: 15px;

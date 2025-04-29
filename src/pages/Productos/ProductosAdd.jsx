@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import InputText from "../../Components/Inputs/InputText";
+import Form from "./Components/Form";
+import styles from "./Productos.module.css";
 import { saveAsync } from "./Services";
+import { Link } from "react-router-dom";
 
 const ProductosAdd = () => {
   const navigate = useNavigate();
@@ -13,8 +15,7 @@ const ProductosAdd = () => {
     stock: 0,
   });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     const resultado = await saveAsync(producto);
     if (resultado) {
       navigate("/Productos");
@@ -24,64 +25,15 @@ const ProductosAdd = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Agregar producto </h1>
-      {producto && (
-        <>
-          <InputText
-            id="nombre"
-            textLabel="Nombre"
-            type="text"
-            value={producto.nombre}
-            onChange={(nombre) =>
-              setProducto((oldData) => ({
-                ...oldData,
-                nombre: nombre,
-              }))
-            }
-          />
-          <InputText
-            id="marca"
-            textLabel="Marca"
-            type="text"
-            value={producto.marca}
-            onChange={(marca) =>
-              setProducto((oldData) => ({
-                ...oldData,
-                marca: marca,
-              }))
-            }
-          />
-          <InputText
-            id="precio"
-            textLabel="Precio"
-            type="number"
-            value={producto.precio}
-            onChange={(precio) =>
-              setProducto((oldData) => ({
-                ...oldData,
-                precio: precio,
-              }))
-            }
-          />
-          <InputText
-            id="stock"
-            textLabel="Stock"
-            type="number"
-            value={producto.stock}
-            onChange={(stock) =>
-              setProducto((oldData) => ({
-                ...oldData,
-                stock: stock,
-              }))
-            }
-          />
-          <div>
-            <button type="submit">Guardar</button>
-          </div>
-        </>
-      )}
-    </form>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Agregar producto </h1>
+      <Link to="/Productos">Atras</Link>
+      <Form
+        producto={producto}
+        setProducto={setProducto}
+        onSubmit={handleSubmit}
+      />
+    </div>
   );
 };
 
