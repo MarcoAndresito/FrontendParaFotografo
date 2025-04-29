@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./AlbumList.module.css"; // Asegúrate de tener este archivo CSS para estilos
+import styles from './AlbumList.module.css';
 
 const AlbumList = () => {
     const [albumes, setAlbumes] = useState([]);
@@ -24,30 +24,30 @@ const AlbumList = () => {
     };
 
     return (
-        <div>
-            <h1>------Lista de Álbumes------</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>  ID  </th>
-                        <th>  Nombre  </th>
-                        <th>  Descripción  </th>
-                        <th>  Acciones  </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {albumes.map((album) => (
-                        <tr key={album.id}>
-                            <td>{album.id}</td>
-                            <td>{album.nombre}</td>
-                            <td>{album.descripcion}</td>
-                            <td>{album.acciones}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className={styles.container}> 
+          <h1 className={styles.title}>------Lista de Álbumes------</h1> 
+          <table className={styles.table}> 
+            <thead className={styles.thead}> 
+              <tr>
+                <th className={styles.th}> ID </th> 
+                <th className={styles.th}> Nombre </th>
+                <th className={styles.th}> Descripción </th>
+                <th className={styles.th}> Acciones </th>
+              </tr>
+            </thead>
+            <tbody className={styles.tbody}>
+              {albumes.map((album) => (
+                <tr key={album.id}>
+                  <td className={styles.td}>{album.id}</td> 
+                  <td className={styles.td}>{album.nombre}</td>
+                  <td className={styles.td}>{album.descripcion}</td>
+                  <td className={styles.td}>{album.acciones}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-    );
+      );
 }
 
 export default AlbumList;

@@ -1,0 +1,69 @@
+.container {
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  
+  .title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden; /* Para que el border-radius funcione en la tabla */
+  }
+  
+  .thead {
+    background-color: #f2f2f2;
+  }
+  
+  .th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+    color: #555;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .td:last-child {
+    text-align: center; /* Centrar el contenido de la columna de acciones */
+  }
+  
+  .actionsButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .actionsButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .actionsButton:last-child {
+    margin-right: 0;
+  }
+  
+  .actionsLink {
+    text-decoration: none;
+  }
