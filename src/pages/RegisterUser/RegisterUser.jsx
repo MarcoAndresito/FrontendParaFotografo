@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./RegisterUser.module.css";
 
 const RegisterUser = () => {
@@ -8,6 +9,7 @@ const RegisterUser = () => {
     Contraseña: "",
     ConfirmarContraseña: ""
   });
+  const navigate = useNavigate(); // Obtén la función navigate
 
   const handleChange = (e) => {
     setFormData({
@@ -49,6 +51,7 @@ const RegisterUser = () => {
           Contraseña: "",
           ConfirmarContraseña: ""
         });
+        navigate("/autenticacion");
       } else {
         showModal("Error al registrar: " + (data?.message || data), "error");
       }

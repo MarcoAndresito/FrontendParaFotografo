@@ -42,7 +42,6 @@ const Autenticacion = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("hola handleSubmit");
 
     setIsSubmitting(true);
 
@@ -157,9 +156,6 @@ const Autenticacion = () => {
               >
                 {isSubmitting ? "Iniciando sesion..." : "Iniciar sesion"}
               </button>
-              {isSubmitting ? "enviando" : "no enviando"}
-              <br />
-              {isFormValid ? "valido" : "no valido"}
             </form>
           </div>
           <div className="form-card">
