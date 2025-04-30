@@ -1,34 +1,142 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import styles from "./ConfigurarAlbum.module.css"; // Importa el archivo CSS
+import styles from "./ConfigurarAlbum.module.css";
 
 const ConfigurarAlbum = () => {
+  const [albums, setAlbums] = useState([]); // Lista de álbumes
+  const [albumId, setAlbumId] = useState(null); // ID del álbum seleccionado
   const [albumName, setAlbumName] = useState("");
   const [albumDescription, setAlbumDescription] = useState("");
   const [ownerName, setOwnerName] = useState("");
-  const [isPublic, setIsPublic] = useState(false); // Estado para público/privado
-  const [photos, setPhotos] = useState([
-    "https://img.freepik.com/foto-gratis/familia-pequeno-hijo-parque-otono_1157-22273.jpg?semt=ais_hybrid&w=740",
-    "https://img.freepik.com/foto-gratis/retrato-cuerpo-entero-familia-sonriente-nino_171337-10331.jpg",
-    "https://img.freepik.com/foto-gratis/familia-vista-frontal-pasando-rato-embarcadero_23-2150558016.jpg",
-    "https://img.freepik.com/foto-gratis/padres-felices-hijo-naturaleza_23-2148201539.jpg?semt=ais_hybrid&w=740",
-    "https://img.freepik.com/foto-gratis/padres-felices-hijo-naturaleza_23-2148201530.jpg?semt=ais_hybrid&w=740",
-  ]);
+  const [creationDate, setCreationDate] = useState(""); // Fecha de creación
+  const [photos, setPhotos] = useState([]); // Fotos del álbum
+  const [loading, setLoading] = useState(true); // Indicador de carga
 
   const handleInputChange = (setter) => (e) => {
     setter(e.target.value);
   };
 
-  const responsive = {
-    desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
-    tablet: { breakpoint: { max: 1024, min: 464 }, items: 2 },
-    mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
+  // Cargar álbumes disponibles
+  const fetchAlbums = async () => {
+    try {
+      const response = await fetch("https://localhost:7062/api/Albumes");
+      if (response.ok) {
+        const data = await response.json();
+        setAlbums(data);
+      } else {
+        console.error("Error al cargar los álbumes:", response.statusText);
+        alert("Error al cargar los álbumes");
+      }
+    } catch (error) {
+      console.error("Error al conectar con el servidor:", error);
+      alert("Error al conectar con el servidor");
+    } finally {
+      setLoading(false); // Finaliza la carga
+    }
   };
+
+  // Cargar datos del álbum seleccionado
+  const fetchAlbumDetails = async (id) => {
+    try {
+      const response = await fetch(`https://localhost:7062/api/Albumes/${id}`);
+      if (response.ok) {
+        const album = await response.json();
+        setAlbumName(album.nombre || "");
+        setAlbumDescription(album.descripcion || "");
+        setOwnerName(album.usuarioId || "");
+        setCreationDate(album.fechaCreacion || ""); // Fecha de creación
+        setPhotos(album.fotos || []); // Fotos del álbum
+      } else {
+        console.error("Error al cargar los detalles del álbum:", response.statusText);
+        alert("Error al cargar los detalles del álbum");
+      }
+    } catch (error) {
+      console.error("Error al conectar con el servidor:", error);
+      alert("Error al conectar con el servidor");
+    }
+  };
+
+  // Manejar selección de álbum
+  const handleAlbumSelect = (e) => {
+    const selectedId = e.target.value;
+    setAlbumId(selectedId);
+    if (selectedId) {
+      fetchAlbumDetails(selectedId);
+    } else {
+      // Limpiar el formulario si no hay álbum seleccionado
+      setAlbumName("");
+      setAlbumDescription("");
+      setOwnerName("");
+      setCreationDate("");
+      setPhotos([]);
+    }
+  };
+
+  // Guardar cambios en el álbum
+  const handleSaveChanges = async () => {
+    if (!albumId) {
+      alert("Por favor, selecciona un álbum para guardar los cambios.");
+      return;
+    }
+
+    const updatedAlbum = {
+      id: albumId,
+      nombre: albumName,
+      descripcion: albumDescription,
+      usuarioId: ownerName,
+      fechaCreacion: creationDate,
+    };
+
+    try {
+      const response = await fetch(`https://localhost:7062/api/Albumes/${albumId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedAlbum),
+      });
+
+      if (response.ok) {
+        alert("Cambios guardados con éxito.");
+      } else {
+        console.error("Error al guardar los cambios:", response.statusText);
+        alert("Error al guardar los cambios.");
+      }
+    } catch (error) {
+      console.error("Error al conectar con el servidor:", error);
+      alert("Error al conectar con el servidor.");
+    }
+  };
+
+  useEffect(() => {
+    fetchAlbums();
+  }, []);
+
+  if (loading) {
+    return <p className={styles.loading}>Cargando...</p>; // Indicador de carga
+  }
 
   return (
     <div className={styles.container}>
       <h1 className={styles.h1}>Configurar Álbum</h1>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>
+          Seleccionar Álbum:
+          <select
+            value={albumId || ""}
+            onChange={handleAlbumSelect}
+            className={styles.select}
+          >
+            <option value="">-- Seleccionar --</option>
+            {albums.map((album) => (
+              <option key={album.id} value={album.id}>
+                {album.nombre}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
       <div className={styles.formGroup}>
         <label className={styles.label}>
           Nombre del Álbum:
@@ -62,29 +170,26 @@ const ConfigurarAlbum = () => {
         </label>
       </div>
       <div className={styles.formGroup}>
-        <label className={styles.checkboxLabel}>
+        <label className={styles.label}>
+          Fecha de Creación:
           <input
-            type="checkbox"
-            checked={isPublic}
-            onChange={() => setIsPublic(!isPublic)}
-            className={styles.checkbox}
+            type="date"
+            value={creationDate.split("T")[0]} // Formato de fecha
+            onChange={handleInputChange(setCreationDate)}
+            className={styles.input}
           />
-          ¿Hacer el álbum público?
         </label>
       </div>
-      <div className={styles.albumStatus}>
-        <p>
-          Estado del álbum: <strong>{isPublic ? "Público" : "Privado"}</strong>
-        </p>
-      </div>
-
+      <button onClick={handleSaveChanges} className={styles.button}>
+        Guardar Cambios
+      </button>
       <div className={styles.carouselContainer}>
-        <h2>Fotos del Álbum</h2>
-        <Carousel responsive={responsive}>
+        <h2>Fotos del Álbums</h2>
+        <Carousel responsive={{}}>
           {photos.map((photo, index) => (
             <div key={index} className={styles.carouselItem}>
               <img
-                src={photo}
+                src={`data:image/jpeg;base64,${photo.imageBytes}`} // Mostrar fotos en base64
                 alt={`Foto ${index + 1}`}
                 className={styles.carouselItemImg}
               />
