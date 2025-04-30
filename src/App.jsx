@@ -26,6 +26,10 @@ import Moderador from "./pages/Comentarios/Moderador";
 import Albumes from "./pages/VisorAlbun/Albumes";
 import Album from "./pages/VisorAlbun/Album";
 
+import Precios from "./pages/Precios";
+
+
+
 const App = () => {
     return (
         <BrowserRouter>
@@ -103,6 +107,15 @@ const App = () => {
                 >
                     Comentarios
                 </NavLink>
+
+                <NavLink
+                    to="/Precios"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Precios de suscripcion
+                </NavLink>
+
+                
             </nav>
 
             <Routes>
@@ -124,6 +137,7 @@ const App = () => {
                 <Route path="/Comentarios" element={<Comentarios />} />
                 <Route path="/ModComentarios" element={<ModComentarios />} />
                 <Route path="/Moderador" element={<Moderador />} />
+                <Route path="/Precios" element={<Precios />} />
             </Routes>
         </BrowserRouter>
     );
