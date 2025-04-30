@@ -1,69 +1,127 @@
 .container {
-    font-family: sans-serif;
-    padding: 20px;
-  }
-  
-  .title {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    overflow: hidden; /* Para que el border-radius funcione en la tabla */
-  }
-  
-  .thead {
-    background-color: #f2f2f2;
-  }
-  
-  .th {
-    padding: 12px 15px;
-    text-align: left;
-    font-weight: bold;
-    color: #555;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .td:last-child {
-    text-align: center; /* Centrar el contenido de la columna de acciones */
-  }
-  
-  .actionsButton {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    margin-right: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease;
-  }
-  
-  .actionsButton:hover {
-    background-color: #0056b3;
-  }
-  
-  .actionsButton:last-child {
-    margin-right: 0;
-  }
-  
-  .actionsLink {
-    text-decoration: none;
-  }
+  font-family: sans-serif;
+  padding: 20px;
+  position: relative; /* Lo mantenemos por si acaso para el dropdown */
+  display: flex;
+  flex-direction: column; /* Apilamos los elementos verticalmente */
+  align-items: stretch; /* Estiramos los elementos para que ocupen todo el ancho */
+}
+
+.title {
+  color: #333;
+  margin-bottom: 20px; /* Espacio entre el título y el contenedor del botón */
+  text-align: center; /* Aseguramos que el texto del título esté centrado */
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end; /* Alinea el contenido (el botón) a la derecha */
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+}
+
+.addButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.addButton:hover {
+  background-color: #1e7e34;
+}
+
+.tableContainer {
+  width: 100%; /* La tabla ocupa todo el ancho */
+  margin-top: 20px; /* Espacio entre el botón y la tabla */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: visible;
+}
+
+.thead {
+  background-color: #f2f2f2;
+}
+
+.th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: bold;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+}
+
+.tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  overflow: visible; /* Asegúrate de que la celda no corte el contenido */
+}
+
+.td:last-child {
+  text-align: center; /* Centrar el contenido de la columna de acciones */
+  overflow: visible; /* Asegúrate de que la celda no corte el contenido */
+}
+
+/* Estilos para el dropdown */
+.dropdown {
+  position: relative; /* El botón actuará como punto de referencia */
+  display: inline-block;
+}
+
+.dropdownButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+  z-index: 2; /* Asegurarse de que el botón esté por encima del contenido desplegable si este se sale */
+}
+
+.dropdownButton:hover {
+  background-color: #0056b3;
+}
+
+.dropdownContent {
+  position: absolute; /* Volvemos a absolute */
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10; /* Asegura que esté por encima de la tabla */
+  border-radius: 5px;
+  overflow: hidden;
+  top: 0; /* Alinea la parte superior con la parte inferior del botón */
+  left: 100%; /* Posiciona a la derecha del botón */
+  transform: translateX(5px);
+}
+
+.dropdownItem {
+  color: black;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: 100%;
+  text-align: left; /* Alinea el texto de los botones a la izquierda */
+}
+
+.dropdownItem:hover {
+  background-color: #ddd;
+}
