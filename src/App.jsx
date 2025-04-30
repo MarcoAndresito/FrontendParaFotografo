@@ -49,14 +49,7 @@ const App = () => {
                     Acerca de
                 </NavLink>
                 <NavLink
-                    to="/login"
-                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
-                >
-                    Login
-                </NavLink>
-                <NavLink
-                    to="/uploadphoto"
-                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+
                 >
                     Álbum
                 </NavLink>{" "}
