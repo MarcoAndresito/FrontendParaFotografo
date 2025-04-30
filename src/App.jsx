@@ -115,7 +115,6 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="login" element={<Login />} />
                 <Route path="/uploadphoto" element={<UploadPhoto />} />{" "}
                 {/* Ruta correcta para UploadPhoto */}
                 <Route path="/RegisterUser" element={<RegisterUser />} />

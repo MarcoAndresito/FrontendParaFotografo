@@ -6,69 +6,71 @@ import { useState } from "react";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 
-
 const Autenticacion = () => {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  })
+    correo: "",
+    contraseña: "",
+  });
 
   const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  })
+    correo: "",
+    contraseña: "",
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const navigate = useNavigate(); // Inicializa useNavigate
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
+  const validatecorreo = (correo) => {
+    const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return correoRegex.test(correo);
+  };
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
-    })
+    });
 
     if (errors[name]) {
       setErrors({
         ...errors,
         [name]: "",
-      })
+      });
     }
-  }
-
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    console.log("hola handleSubmit");
+
+    setIsSubmitting(true);
 
     const newErrors = {
-      email: "",
-      password: "",
+      correo: "",
+      contraseña: "",
+    };
+
+    if (!formData.correo) {
+      newErrors.correo = "correo es requerido";
+    } else if (!validatecorreo(formData.correo)) {
+      newErrors.correo = "Ingresa un correo valido";
     }
 
-    if (!formData.email) {
-      newErrors.email = "Email es requerido"
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = "Ingresa un correo valido"
+    if (!formData.contraseña) {
+      newErrors.contraseña = "contraseña es requerido";
+    } else if (formData.contraseña.length < 8) {
+      newErrors.contraseña = "Ingresa como minimo 8 caracteres";
     }
 
-    if (!formData.password) {
-      newErrors.password = "Password es requerido"
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Ingresa como minimo 6 caracteres"
-    }
+    console.log("formData", formData);
+    console.log("newErrors", newErrors);
 
-    setErrors(newErrors)
+    setErrors(newErrors);
 
-
-    if (!newErrors.email && !newErrors.password) {
+    if (!newErrors.correo && !newErrors.contraseña) {
       try {
-        const response = await fetch("https://localhost:7062/api/Auth/login", { // Llama a API del backend
+        const response = await fetch("https://localhost:7062/api/Auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -78,30 +80,32 @@ const Autenticacion = () => {
 
         if (response.ok) {
           console.log("Inicio de sesión exitoso");
-          navigate("/"); // Redirige a la página de inicio
-          // Aquí puedes guardar el token de sesión si tu backend lo devuelve
+          navigate("/");
         } else {
           const errorData = await response.json();
           console.error("Error al iniciar sesión:", errorData);
-          // Aquí muestra un mensaje de error al usuario
         }
       } catch (error) {
         console.error("Error de conexión:", error);
-        // Aquí podrías muestra un mensaje de error de conexión
       } finally {
         setIsSubmitting(false);
       }
     } else {
-      setIsSubmitting(false)
+      console.log("else");
+
+      setIsSubmitting(false);
     }
   };
 
   const handleRegisterClick = () => {
     navigate("/RegisterUser"); // Redirige a la página de registro
   };
-  
 
-  const isFormValid = !errors.email && !errors.password && formData.email && formData.password
+  const isFormValid =
+    !errors.correo &&
+    !errors.contraseña &&
+    formData.correo &&
+    formData.contraseña;
   return (
     <div className="auth-container">
       <main className="auth-content">
@@ -113,52 +117,65 @@ const Autenticacion = () => {
           <div className="form-card">
             <div className="logo-container">
               <div className="logo-wrapper">
-                <span className="logo-text">Autenticacion</span>
+                <span className="logo-text">Inicio de sesion</span>
               </div>
             </div>
 
             <form className="form-wrapper" onSubmit={handleSubmit}>
               <div className="form-group">
                 <input
-                  type="text"
-                  name="email"
-                  className={`form-input ${errors.email ? "error" : ""}`}
-                  placeholder="Email address"
-                  aria-label="Email address"
-                  value={formData.email}
+                  type="email"
+                  name="correo"
+                  className={`form-input`}
+                  placeholder="correo address"
+                  aria-label="correo address"
+                  value={formData.correo}
                   onChange={handleChange}
                 />
-                {errors.email && <div className="error-message">{errors.email}</div>}
+                {errors.correo && (
+                  <div className="error-message">{errors.correo}</div>
+                )}
               </div>
               <div className="form-group">
-              <input
+                <input
                   type="password"
-                  name="password"
-                  className={`form-input ${errors.password ? "error" : ""}`}
-                  placeholder="Password"
-                  aria-label="Password"
-                  value={formData.password}
+                  name="contraseña"
+                  className={`form-input ${errors.contraseña ? "error" : ""}`}
+                  placeholder="contraseña"
+                  aria-label="contraseña"
+                  value={formData.contraseña}
                   onChange={handleChange}
                 />
-                {errors.password && <div className="error-message">{errors.password}</div>}
+                {errors.contraseña && (
+                  <div className="error-message">{errors.contraseña}</div>
+                )}
               </div>
-              <button type="submit" className="submit-button" disabled={isSubmitting || !isFormValid}>
+              <button
+                type="submit"
+                className="submit-button"
+                disabled={isSubmitting || !isFormValid}
+              >
                 {isSubmitting ? "Iniciando sesion..." : "Iniciar sesion"}
               </button>
-
+              {isSubmitting ? "enviando" : "no enviando"}
+              <br />
+              {isFormValid ? "valido" : "no valido"}
             </form>
           </div>
           <div className="form-card">
             <div className="signup-link">
               ¿No tienes una cuenta?{" "}
-              <button type="button" className="link-button" onClick={handleRegisterClick}>
+              <button
+                type="button"
+                className="link-button"
+                onClick={handleRegisterClick}
+              >
                 Regístrate
               </button>
             </div>
           </div>
         </div>
       </main>
-
     </div>
   );
 };
