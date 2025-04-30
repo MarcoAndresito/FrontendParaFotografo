@@ -24,8 +24,10 @@ import Comentarios from "./pages/Comentarios/Comentarios";
 import ModComentarios from "./pages/Comentarios/ModComentarios";
 import Moderador from "./pages/Comentarios/Moderador";
 
-import Albumes from "./pages/VisorAlbun/Albumes";
-import Album from "./pages/VisorAlbun/Album";
+import Albumes from "./pages/VisorFotos/Albumes";
+import Album from "./pages/VisorFotos/Album";
+
+import Precios from "./pages/Precios";
 
 const App = () => {
   return (
@@ -51,6 +53,9 @@ const App = () => {
         <Link to="/ConfigurarAlbum">Configurar Álbum</Link>
         <Link to="/Comentarios">Comentarios</Link>
 
+        <Link to="/Precios">Precios de suscripcion</Link>
+
+        <Link to="/album/1">Ver Álbum 1</Link>
         <Link to="/albumes">Ver Álbumes</Link>
       </nav>
 
@@ -75,6 +80,10 @@ const App = () => {
         <Route path="/Moderador" element={<Moderador />} />
         <Route path="/albumes" element={<Albumes />} />
         <Route path="/album/:id" element={<Album />} />
+
+        <Route path="/Precios" element={<Precios />} />
+        
+        
       </Routes>
     </BrowserRouter>
   );
