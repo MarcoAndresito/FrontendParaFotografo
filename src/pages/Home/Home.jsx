@@ -5,7 +5,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     const handleIniciarSesion = () => {
-        navigate("/login");
+        navigate("/Autenticacion");
     };
 
     const handleRegistrarse = () => {
@@ -25,7 +25,7 @@ const Home = () => {
 
             {/* Hero Section */}
             <section className="hero">
-                {/* <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Álbum de Fotos" className="hero-image"/> */}
+                <img src="https://imagenes.elpais.com/resizer/v2/6SQZE6Y6GRBN5HA7GCEY5WEENE.png?auth=ce380c171cda5ebbeb04dec4ec665014bbed712361ac970b8257328f3f8b0f99&width=980" alt="Álbum de Fotos" className="hero-image"/>
                 <div className="hero-text">
                     <h2>Crea, Comparte y Exporta tus Recuerdos</h2>
                     <p>Sube tus fotos favoritas y crea increíbles álbumes digitales en segundos.</p>

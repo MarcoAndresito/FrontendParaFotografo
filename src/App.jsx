@@ -4,7 +4,7 @@ import reactLogo from "./assets/react.svg";
 import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
 import ConfigurarAlbum from "./pages/ConfigurarAlbum/ConfigurarAlbum";
 import About from "./pages/AcercaDe/About";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import ProductosAdd from "./pages/Productos/ProductosAdd";
 import ProductosList from "./pages/Productos/ProductosList";
 import ProductosUpd from "./pages/Productos/ProductosUpd";
