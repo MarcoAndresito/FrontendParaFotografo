@@ -26,6 +26,10 @@ import Moderador from "./pages/Comentarios/Moderador";
 import Albumes from "./pages/VisorAlbun/Albumes";
 import Album from "./pages/VisorAlbun/Album";
 
+import Precios from "./pages/Precios";
+
+
+
 const App = () => {
     return (
         <BrowserRouter>
@@ -97,6 +101,20 @@ const App = () => {
                 >
                     Configurar Álbum
                 </NavLink>
+                <NavLink
+                    to="/Comentarios"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Comentarios
+                </NavLink>
+
+                <NavLink
+                    to="/Precios"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Precios de suscripcion
+                </NavLink>
+
                 
             </nav>
 
@@ -108,15 +126,16 @@ const App = () => {
                 <Route path="/autenticacion" element={<Autenticacion />} />
                 <Route path="/exportarAlbum" element={<ExportarAlbum />} />{/* Ruta correcta para ExportarAlbum */}
                 <Route path="/comentarios" element={<Coment />} />
-                <Route path="/productos" element={<ProductosList />} />
-                <Route path="/parametros" element={<ParametrosList />} />
-                <Route path="/productos/:id" element={<ProductosUpd />} />
-                <Route path="/productos/new" element={<ProductosAdd />} />
-                <Route path="/parametros/new" element={<ParametrosAdd />} />
-                <Route path="/configurarAlbum" element={<ConfigurarAlbum />} />
-                <Route path="/comentariosList" element={<Comentarios />} />{/* Corregido: Ruta única para la lista de comentarios */}
-                <Route path="/modComentarios" element={<ModComentarios />} />
-                <Route path="/moderador" element={<Moderador />} />
+                <Route path="/Productos" element={<ProductosList />} />
+                <Route path="/Parametros" element={<ParametrosList />} />
+                <Route path="/Productos/:id" element={<ProductosUpd />} />
+                <Route path="/Productos/new" element={<ProductosAdd />} />
+                <Route path="/Parametros/new" element={<ParametrosAdd />} />
+                <Route path="/ConfigurarAlbum" element={<ConfigurarAlbum />} />
+                <Route path="/Comentarios" element={<Comentarios />} />
+                <Route path="/ModComentarios" element={<ModComentarios />} />
+                <Route path="/Moderador" element={<Moderador />} />
+                <Route path="/Precios" element={<Precios />} />
             </Routes>
         </BrowserRouter>
     );
