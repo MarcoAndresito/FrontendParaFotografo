@@ -6,6 +6,9 @@ import Testimonios from "../Home/components/Testimonios";
 import PreguntasFrecuentes from "../Home/components/PreguntasFrecuentes";
 import Footer from "../Home/components/Footer";
 
+import GaleriaDestacada from "../Home/components/GaleriaDestacada";
+import LlamadoAccion from "../Home/components/LlamadoAccion";
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -26,8 +29,13 @@ const Home = () => {
 
       <HeroSection />
       <FeatureGrid />
+      {/* <GaleriaDestacada /> */}
+      <br></br>
       <Testimonios />
+      <br></br>
       <PreguntasFrecuentes />
+      <br></br>
+      <LlamadoAccion />
       <Footer />
     </div>
   );
