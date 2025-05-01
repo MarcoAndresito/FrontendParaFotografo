@@ -49,11 +49,11 @@ const App = () => {
                     Acerca de
                 </NavLink>
                 <NavLink
-
+                    to="/uploadphoto" //  Cambia esto
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
                 >
                     Álbum
-                </NavLink>{" "}
-                {/* Enlace a la página de carga de fotos */}
+                </NavLink>
                 <NavLink
                     to="/RegisterUser"
                     className={({ isActive }) => (isActive ? "active-link" : undefined)}
@@ -97,33 +97,26 @@ const App = () => {
                 >
                     Configurar Álbum
                 </NavLink>
-                <NavLink
-                    to="/Comentarios"
-                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
-                >
-                    Comentarios
-                </NavLink>
+                
             </nav>
 
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/uploadphoto" element={<UploadPhoto />} />{" "}
-                {/* Ruta correcta para UploadPhoto */}
-                <Route path="/RegisterUser" element={<RegisterUser />} />
-                <Route path="/Autenticacion" element={<Autenticacion />} />
-                <Route path="/ExportarAlbum" element={<ExportarAlbum />} />{" "}
-                {/* Ruta correcta para ExportarAlbum */}
+                <Route path="/uploadphoto" element={<UploadPhoto />} />{/* Ruta correcta para UploadPhoto */}
+                <Route path="/registerUser" element={<RegisterUser />} />
+                <Route path="/autenticacion" element={<Autenticacion />} />
+                <Route path="/exportarAlbum" element={<ExportarAlbum />} />{/* Ruta correcta para ExportarAlbum */}
                 <Route path="/comentarios" element={<Coment />} />
-                <Route path="/Productos" element={<ProductosList />} />
-                <Route path="/Parametros" element={<ParametrosList />} />
-                <Route path="/Productos/:id" element={<ProductosUpd />} />
-                <Route path="/Productos/new" element={<ProductosAdd />} />
-                <Route path="/Parametros/new" element={<ParametrosAdd />} />
-                <Route path="/ConfigurarAlbum" element={<ConfigurarAlbum />} />
-                <Route path="/Comentarios" element={<Comentarios />} />
-                <Route path="/ModComentarios" element={<ModComentarios />} />
-                <Route path="/Moderador" element={<Moderador />} />
+                <Route path="/productos" element={<ProductosList />} />
+                <Route path="/parametros" element={<ParametrosList />} />
+                <Route path="/productos/:id" element={<ProductosUpd />} />
+                <Route path="/productos/new" element={<ProductosAdd />} />
+                <Route path="/parametros/new" element={<ParametrosAdd />} />
+                <Route path="/configurarAlbum" element={<ConfigurarAlbum />} />
+                <Route path="/comentariosList" element={<Comentarios />} />{/* Corregido: Ruta única para la lista de comentarios */}
+                <Route path="/modComentarios" element={<ModComentarios />} />
+                <Route path="/moderador" element={<Moderador />} />
             </Routes>
         </BrowserRouter>
     );

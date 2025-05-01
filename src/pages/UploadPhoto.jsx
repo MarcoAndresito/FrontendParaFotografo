@@ -1,6 +1,4 @@
-// src/pages/UploadPhoto.jsx
 import React, { useState, useRef } from 'react';
-import '../App.css';
 
 function UploadPhoto() {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -28,7 +26,7 @@ function UploadPhoto() {
   };
   const handleDragOver = (e) => e.preventDefault();
 
-  const handleUpload = () => {
+  const handleUpload = async () => { // Declara handleUpload como async
     if (selectedFiles.length === 0) {
       showNotification("Selecciona al menos una imagen", "error");
       return;
@@ -36,58 +34,93 @@ function UploadPhoto() {
 
     setUploading(true);
     setUploadProgress(0);
-    let progress = 0;
 
-    uploadController.current = setInterval(() => {
-      progress += 10;
-      setUploadProgress(progress);
-      if (progress >= 100) {
-        clearInterval(uploadController.current);
-        const newImages = selectedFiles.map(f => f.preview);
-        setImages(prev => [...prev, ...newImages]);
-        setSelectedFiles([]);
-        setUploading(false);
-        showNotification("¡Imágenes subidas exitosamente!", "success");
+    try {
+      const formData = new FormData();
+      selectedFiles.forEach(fileObj => {
+        formData.append('imageFile', fileObj.file); // Usa el nombre 'imageFile' que espera tu backend
+      });
+
+      // AbortController para cancelar la subida
+      uploadController.current = new AbortController();
+      const signal = uploadController.current.signal;
+
+      const response = await fetch('http://localhost:5018/api/upload/uploadFoto', { // Usa la ruta correcta
+        method: 'POST',
+        body: formData,
+        signal: signal, // Pasa la señal al fetch
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    }, 200);
+      const data = await response.json();
+      console.log("Respuesta del servidor:", data); // Agrega esto para ver la respuesta del servidor
+
+      if (data && data.images && Array.isArray(data.images)) {
+        setImages(prevImages => [...prevImages, ...data.images]);
+        showNotification("Imágenes subidas correctamente", "success");
+      } else if (data && data.imageUrl) {
+        setImages(prevImages => [...prevImages, data.imageUrl]);
+        showNotification("Imagen subida correctamente", "success");
+      }
+       else {
+        showNotification("No se recibieron las URLs de las imágenes", "error");
+      }
+
+      setSelectedFiles([]);
+      setUploading(false);
+      setUploadProgress(0);
+
+
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        showNotification("Subida cancelada", "info");
+      } else {
+        console.error("Error al subir imágenes:", error);
+        showNotification(`Error al subir imágenes: ${error.message}`, "error");
+      }
+      setUploading(false);
+      setUploadProgress(0);
+    }
   };
 
   const handleCancelUpload = () => {
     if (uploadController.current) {
-      clearInterval(uploadController.current);
-      setUploading(false);
-      setUploadProgress(0);
-      showNotification("Subida cancelada", "error");
+      uploadController.current.abort(); // Cancela la petición fetch
     }
-  };
-
-  const handleDeleteImage = (imageUrl) => {
-    setImages(prev => prev.filter(img => img !== imageUrl));
-    showNotification("Imagen eliminada", "success");
+    setUploading(false);
+    setUploadProgress(0);
+    setSelectedFiles([]); // Limpia los archivos seleccionados
   };
 
   const showNotification = (message, type) => {
     setNotification({ message, type });
-    setTimeout(() => setNotification(null), 3000);
+    setTimeout(() => setNotification(null), 5000); // Oculta la notificación después de 5 segundos
+  };
+
+  const handleDeleteImage = (imageUrl) => {
+    setImages(prevImages => prevImages.filter(img => img !== imageUrl));
   };
 
   return (
-    <div className="upload-photo-container">
-      <h2>Subir Fotos o Álbum</h2>
+    <div className="upload-container">
+      <h1>Subir Fotos</h1>
 
       <div
         className="drop-zone"
-        onClick={() => fileInputRef.current.click()}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
+        onClick={() => fileInputRef.current.click()}
       >
-        Arrastra y suelta imágenes aquí o haz clic para seleccionar
+        <p>Arrastra y suelta imágenes aquí, o haz clic para seleccionar archivos</p>
         <input
           type="file"
           multiple
           accept="image/*"
-          ref={fileInputRef}
           onChange={handleFileChange}
+          ref={fileInputRef}
+          style={{ display: 'none' }} // Oculta el input real
           hidden
         />
       </div>
@@ -103,7 +136,7 @@ function UploadPhoto() {
       )}
 
       {!uploading ? (
-        <button onClick={handleUpload}>Subir Imágenes</button>
+        <button onClick={handleUpload} disabled={uploading}>Subir Imágenes</button>
       ) : (
         <div className="upload-progress">
           <p>Subiendo... {uploadProgress}%</p>
@@ -143,3 +176,5 @@ function UploadPhoto() {
 }
 
 export default UploadPhoto;
+
+
