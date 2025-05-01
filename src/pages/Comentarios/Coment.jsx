@@ -25,7 +25,7 @@ const ComentariosComponent = ({ fotoId }) => {
   const fetchComments = async (id) => {
     setLoadingComments(true);
     try {
-      const response = await fetch(`TU_API_URL/api/fotos/${id}/comentarios`);
+      const response = await fetch(`https://localhost:7062/api/Albumes/1/Fotos${id}/comentarios`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

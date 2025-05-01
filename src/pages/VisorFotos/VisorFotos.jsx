@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import './VisorFotos.css'; // Asegúrate de importar el CSS
+import './VisorFotos.css'; 
+import Coment from "../Comentarios/Coment";
 
 const VisorFotos = ({ albumId, fotoId }) => {
   const [fotoUrl, setFotoUrl] = useState(null);
@@ -34,7 +35,9 @@ const VisorFotos = ({ albumId, fotoId }) => {
     <div className="visor-fotos-container fade-in">
       <h3>Foto del Álbum</h3>
       <img src={fotoUrl} alt="Foto del álbum" />
+      <Coment fotoId={fotoId} />
     </div>
+    
   );
 };
 
