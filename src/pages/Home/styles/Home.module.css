@@ -5,6 +5,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Navbar */
 .navbar {
   background-color: #2563EB;
   padding: 1rem 2rem;
@@ -22,7 +23,6 @@
   color: #ffffff;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
-
 
 .navButtons {
   display: flex;
@@ -137,9 +137,66 @@
   color: #6B7280;
 }
 
+/* Footer */
 .footer {
   background-color: #2563EB;
   color: white;
   text-align: center;
   padding: 1rem;
+}
+
+.seccion {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.titulo {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.testimoniosContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.testimonioCard {
+  max-width: 600px;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.testimonioTexto {
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.testimonioAutor {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #444;
+}
+
+.preguntaItem {
+  margin: 2rem 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.pregunta {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.respuesta {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #555;
 }

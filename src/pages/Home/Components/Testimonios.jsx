@@ -1,24 +1,26 @@
+import styles from "../styles//Home.module.css";
+
+
 const Testimonios = () => {
-    return (
-      <section className="testimonios">
-        <h2>Lo que dicen nuestros usuarios</h2>
-        <div className="testimonios-grid">
-          <div>
-            <p>"Una herramienta increíble para guardar mis recuerdos."</p>
-            <span>- Ana M.</span>
-          </div>
-          <div>
-            <p>"Fácil de usar y muy útil. ¡La amo!"</p>
-            <span>- Juan P.</span>
-          </div>
-          <div>
-            <p>"Ideal para compartir mis viajes con amigos."</p>
-            <span>- Carla R.</span>
-          </div>
+  return (
+    <section className={styles.seccion}>
+      <h2 className={styles.titulo}>Testimonios</h2>
+      <div className={styles.testimoniosContainer}>
+        <div className={styles.testimonioCard}>
+          <p className={styles.testimonioTexto}>
+            "PhotoAlbum me ayudó a organizar mi portafolio fotográfico de una forma muy profesional."
+          </p>
+          <p className={styles.testimonioAutor}>— Juan Pérez</p>
         </div>
-      </section>
-    );
-  };
-  
-  export default Testimonios;
-  
+        <div className={styles.testimonioCard}>
+          <p className={styles.testimonioTexto}>
+            "Es la mejor herramienta para fotógrafos que quieren mostrar su trabajo de manera elegante."
+          </p>
+          <p className={styles.testimonioAutor}>— Ana Torres</p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Testimonios;
