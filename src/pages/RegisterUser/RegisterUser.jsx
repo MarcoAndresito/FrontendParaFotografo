@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./RegisterUser.module.css";
 
 const RegisterUser = () => {
@@ -8,6 +9,7 @@ const RegisterUser = () => {
     Contraseña: "",
     ConfirmarContraseña: ""
   });
+  const navigate = useNavigate(); // Obtén la función navigate
 
   const handleChange = (e) => {
     setFormData({
@@ -49,6 +51,7 @@ const RegisterUser = () => {
           Contraseña: "",
           ConfirmarContraseña: ""
         });
+        
       } else {
         showModal("Error al registrar: " + (data?.message || data), "error");
       }
@@ -134,7 +137,7 @@ const RegisterUser = () => {
             <div className={styles.modalOverlay}>
             <div className={`${styles.modal} ${styles[modal.type]}`}>
                 <p>{modal.message}</p>
-                <button className={styles.btn} onClick={() => setModal({ ...modal, visible: false })}>
+                <button className={styles.btn} onClick={() => navigate("/autenticacion")}>
                 Cerrar
                 </button>
             </div>

@@ -1,0 +1,222 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #2563EB;
+  padding: 1rem 2rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.navButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.navLink {
+  background: transparent;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.navLink:hover {
+  background: white;
+  color: #2563EB;
+}
+
+.registerButton {
+  background: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: #2563EB;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.registerButton:hover {
+  background: #f1f1f1;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: center;
+  color: white;
+  flex: 1;
+}
+
+.heroImage {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.heroText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.heroText h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.heroText p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.heroButton {
+  background-color: #2563EB;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.heroButton:hover {
+  background-color: #1D4ED8;
+}
+
+/* Features */
+.features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  background: white;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature img {
+  width: 80px;
+  margin-bottom: 1rem;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature p {
+  color: #6B7280;
+}
+
+/* Footer */
+.footer {
+  background-color: #2563EB;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.seccionTitulo {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+  text-align: center;
+  justify-content: center;
+}
+
+.testimoniosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimonioCard {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+}
+
+.testimonioImagen {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.testimonioTexto {
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.testimonioNombre {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.testimonioEstrellas {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.faqGrid {
+  display: grid;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  background-color: #f9f9f9;
+  border-left: 4px solid #3b82f6;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.faqPregunta {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.faqRespuesta {
+  color: #444;
+  font-size: 0.95rem;
+}
+.sectionSpacing {
+  margin-top: 4rem; /* Puedes ajustar este valor según tu diseño */
+}

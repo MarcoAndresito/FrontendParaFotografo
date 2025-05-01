@@ -1,17 +1,17 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 import Autenticacion from "./pages/Autenticacionloginsegura/Autenticacion";
 import ConfigurarAlbum from "./pages/ConfigurarAlbum/ConfigurarAlbum";
 import About from "./pages/AcercaDe/About";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import ProductosAdd from "./pages/Productos/ProductosAdd";
 import ProductosList from "./pages/Productos/ProductosList";
 import ProductosUpd from "./pages/Productos/ProductosUpd";
 import RegisterUser from "./pages/RegisterUser/RegisterUser";
 import UploadPhoto from "./pages/UploadPhoto"; // Importar UploadPhoto desde pages
 
-// Parametros 
+// Parametros
 import ParametrosList from "./pages/Parametros/ParametrosList";
 import ParametrosAdd from "./pages/Parametros/ParametrosAdd";
 
@@ -27,28 +27,88 @@ import Albumes from "./pages/VisorAlbun/Albumes";
 import Album from "./pages/VisorAlbun/Album";
 import AlbumListPage from "./pages/ListaAlbumes/AlbumList";
 
+import Precios from "./pages/Precios";
+import VisorFotos from "./pages/VisorFotos/VisorFotos";
+
+
+
 const App = () => {
-  return (
-    <BrowserRouter>
-      <nav>
-        <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        <Link to="/">Inicio</Link>
-        <Link to="/about">Acerca de</Link>
-        <Link to="/uploadphoto">Álbum</Link>{" "}
-        {/* Enlace a la página de carga de fotos */}
-        <Link to="/RegisterUser">Registro de usuario</Link>
-        <Link to="/Autenticacion">Autenticación Segura</Link>
-        <Link to="/ExportarAlbum">Exportar Album</Link> {/* Enlace a la página de carga de fotos */}
-        <Link to="/comentarios">Comentarios</Link>
-        <Link to="/Productos">Productos</Link>
-        <Link to="/Parametros">Parametros</Link>
-        <Link to="/ConfigurarAlbum">Configurar Álbum</Link>
-        <Link to="/Comentarios">Comentarios</Link>
+    return (
+        <BrowserRouter>
+            <nav>
+                <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
+                    <img src={viteLogo} className="logo" alt="Vite logo" />
+                </a>
+                <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
+                    <img src={reactLogo} className="logo react" alt="React logo" />
+                </a>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Inicio
+                </NavLink>
+                <NavLink
+                    to="/about"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Acerca de
+                </NavLink>
+                <NavLink
+                    to="/uploadphoto" //  Cambia esto
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Álbum
+                </NavLink>
+                <NavLink
+                    to="/RegisterUser"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Registro de usuario
+                </NavLink>
+                <NavLink
+                    to="/Autenticacion"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Autenticación Segura
+                </NavLink>
+                <NavLink
+                    to="/ExportarAlbum"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Exportar Album
+                </NavLink>{" "}
+                {/* Enlace a la página de carga de fotos */}
+                <NavLink
+                    to="/comentarios"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Comentarios
+                </NavLink>
+                <NavLink
+                    to="/Productos"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Productos
+                </NavLink>
+                <NavLink
+                    to="/Parametros"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Parametros
+                </NavLink>
+                <NavLink
+                    to="/ConfigurarAlbum"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Configurar Álbum
+                </NavLink>
+                <NavLink
+                    to="/Comentarios"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Comentarios
+                </NavLink>
 
         <Link to="/albumes">Ver Álbumes</Link>
         <Link to="/album-list">Lista de Álbumes</Link>
