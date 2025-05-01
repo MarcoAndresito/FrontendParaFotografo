@@ -30,11 +30,12 @@ const Home = () => {
       <HeroSection />
       <FeatureGrid />
       {/* <GaleriaDestacada /> */}
-      <br></br>
-      <Testimonios />
-      <br></br>
-      <PreguntasFrecuentes />
-      <br></br>
+      <div className={styles.sectionSpacing}>
+        <Testimonios />
+    </div>
+    <div className={styles.sectionSpacing}>
+        <PreguntasFrecuentes />
+        </div>
       <LlamadoAccion />
       <Footer />
     </div>
