@@ -1,0 +1,65 @@
+/* Contenedor principal */
+.visor-fotos-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Título */
+  .visor-fotos-container h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Imagen */
+  .visor-fotos-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .visor-fotos-container img:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Estado de carga */
+  .visor-fotos-loading {
+    text-align: center;
+    padding: 2rem;
+    color: #3498db;
+    font-size: 1.1rem;
+  }
+  
+  /* Estado de error */
+  .visor-fotos-error {
+    text-align: center;
+    padding: 2rem;
+    color: #e74c3c;
+    background-color: #fde8e8;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+  }
+  
+  /* Efectos de transición */
+  .fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }

@@ -27,6 +27,7 @@ import Albumes from "./pages/VisorAlbun/Albumes";
 import Album from "./pages/VisorAlbun/Album";
 
 import Precios from "./pages/Precios";
+import VisorFotos from "./pages/VisorFotos/VisorFotos";
 
 
 
@@ -115,6 +116,12 @@ const App = () => {
                     Precios de suscripcion
                 </NavLink>
 
+                <NavLink
+                    to="/VisorFotos"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Ver Foto
+                </NavLink>
                 
             </nav>
 
@@ -136,6 +143,7 @@ const App = () => {
                 <Route path="/ModComentarios" element={<ModComentarios />} />
                 <Route path="/Moderador" element={<Moderador />} />
                 <Route path="/Precios" element={<Precios />} />
+                <Route path="/VisorFotos" element={<VisorFotos />} />
             </Routes>
         </BrowserRouter>
     );
