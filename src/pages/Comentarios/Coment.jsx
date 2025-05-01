@@ -10,6 +10,9 @@ const ComentariosComponent = ({ fotoId }) => {
   const [text, setText] = useState("");
   const [comments, setComments] = useState([]);
   const [error, setError] = useState("");
+  const [replyingTo, setReplyingTo] = useState(null);
+  const [replyText, setReplyText] = useState("");
+  const [likedComments, setLikedComments] = useState([]);
   const [loadingComments, setLoadingComments] = useState(false);
   const [submittingComment, setSubmittingComment] = useState(false);
 
@@ -27,7 +30,7 @@ const ComentariosComponent = ({ fotoId }) => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-     setComments(data);
+      setComments(data);
     } catch (error) {
       setError("Error al cargar los comentarios.");
       console.error("Error fetching comments:", error);
@@ -38,7 +41,7 @@ const ComentariosComponent = ({ fotoId }) => {
 
   const handleTextChange = (e) => {
     setText(e.target.value);
-    setError(""); 
+    setError("");
   };
 
   const containsProhibitedWords = (text) => {
@@ -74,7 +77,7 @@ const ComentariosComponent = ({ fotoId }) => {
       }
 
       fetchComments(fotoId);
-      setText(""); 
+      setText("");
       setError("");
     } catch (error) {
       setError("Error al guardar el comentario.");
@@ -84,16 +87,114 @@ const ComentariosComponent = ({ fotoId }) => {
     }
   };
 
-  const handleLikeComment = (commentId) => {
-    console.log(`Me gusta en el comentario con ID: ${commentId}`);
+  const handleLikeComment = async (commentId) => {
+    setLikedComments((prev) => [...prev, commentId]);
+
+    try {
+      const response = await fetch(
+        `TU_API_URL/api/comentarios/${commentId}/like`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      fetchComments(fotoId);
+    } catch (error) {
+      setLikedComments((prev) => prev.filter((id) => id !== commentId));
+      console.error("Error al dar like:", error);
+      setError("No se pudo registrar tu 'Me gusta'");
+    }
   };
 
   const handleReplyToComment = (commentId) => {
-    console.log(`Responder al comentario con ID: ${commentId}`);
+    if (replyingTo === commentId) {
+      setReplyingTo(null);
+      setReplyText("");
+    } else {
+      setReplyingTo(commentId);
+      setReplyText("");
+    }
   };
 
-  const handleReportComment = (commentId) => {
-    console.log(`Reportar el comentario con ID: ${commentId}`);
+  const submitReply = async (parentCommentId) => {
+    if (replyText.trim() === "") {
+      setError("El texto de la respuesta no puede estar vacío");
+      return;
+    }
+
+    if (replyText.length > MAX_TEXT_LENGTH) {
+      setError(`Máximo ${MAX_TEXT_LENGTH} caracteres permitidos.`);
+      return;
+    }
+
+    if (containsProhibitedWords(replyText)) {
+      setError("Tu respuesta contiene palabras no permitidas.");
+      return;
+    }
+
+    setSubmittingComment(true);
+    try {
+      const response = await fetch(
+        `TU_API_URL/api/comentarios/${parentCommentId}/respuestas`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ texto: replyText }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      setReplyingTo(null);
+      setReplyText("");
+      setError("");
+
+      fetchComments(fotoId);
+    } catch (error) {
+      console.error("Error al responder:", error);
+      setError("No se pudo enviar tu respuesta");
+    } finally {
+      setSubmittingComment(false);
+    }
+  };
+
+  const handleReportComment = async (commentId) => {
+    if (
+      window.confirm("¿Estás seguro de que quieres reportar este comentario?")
+    ) {
+      try {
+        const response = await fetch(
+          `TU_API_URL/api/comentarios/${commentId}/reportar`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        alert("Comentario reportado correctamente");
+        fetchComments(fotoId);
+      } catch (error) {
+        console.error("Error al reportar:", error);
+        setError("No se pudo reportar el comentario");
+      }
+    }
   };
 
   return (
@@ -125,16 +226,80 @@ const ComentariosComponent = ({ fotoId }) => {
                 </div>
               </div>
               <div className="coment-actions">
-                <button onClick={() => handleLikeComment(comentario.id)}>
-                  Me gusta
+                <button
+                  onClick={() => handleLikeComment(comentario.id)}
+                  className={
+                    likedComments.includes(comentario.id) ? "liked-button" : ""
+                  }
+                >
+                  {likedComments.includes(comentario.id)
+                    ? "Me gusta ✓"
+                    : "Me gusta"}
                 </button>
-                <button onClick={() => handleReplyToComment(comentario.id)}>
-                  Responder
+                <button
+                  onClick={() => handleReplyToComment(comentario.id)}
+                  className={
+                    replyingTo === comentario.id ? "active-button" : ""
+                  }
+                >
+                  {replyingTo === comentario.id ? "Cancelar" : "Responder"}
                 </button>
                 <button onClick={() => handleReportComment(comentario.id)}>
                   Reportar
                 </button>
               </div>
+
+              {replyingTo === comentario.id && (
+                <div className="reply-form">
+                  <textarea
+                    value={replyText}
+                    onChange={(e) => setReplyText(e.target.value)}
+                    placeholder="Escribe tu respuesta..."
+                    className="coment-textarea"
+                  />
+                  <div className="reply-actions">
+                    <button
+                      onClick={() => submitReply(comentario.id)}
+                      className="coment-button"
+                      disabled={submittingComment || replyText.trim() === ""}
+                    >
+                      {submittingComment ? "Enviando..." : "Enviar respuesta"}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {comentario.respuestas && comentario.respuestas.length > 0 && (
+                <div className="replies-container">
+                  {comentario.respuestas.map((respuesta) => (
+                    <div key={respuesta.id} className="reply-item">
+                      <div className="coment-header">
+                        <img
+                          src="avatar.jpg"
+                          alt="Avatar"
+                          className="coment-avatar"
+                          style={{ width: "24px", height: "24px" }}
+                        />
+                        <div className="coment-content">
+                          <span className="coment-author">Usuario</span>
+                          <p className="coment-text">{respuesta.texto}</p>
+                          {respuesta.fechaCreacion && (
+                            <small>
+                              {new Date(
+                                respuesta.fechaCreacion
+                              ).toLocaleTimeString()}{" "}
+                              -
+                              {new Date(
+                                respuesta.fechaCreacion
+                              ).toLocaleDateString()}
+                            </small>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
           {comments.length === 0 && <p>No hay comentarios para esta foto.</p>}

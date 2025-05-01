@@ -160,3 +160,38 @@ h3 {
 .remove-image-btn:hover {
   background: darkred;
 }
+
+.liked-button {
+  color: #1877f2;
+  font-weight: bold;
+}
+
+.active-button {
+  color: #1877f2;
+  font-weight: bold;
+}
+
+.reply-form {
+  margin-top: 10px;
+  margin-left: 40px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.reply-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.replies-container {
+  margin-left: 40px;
+  margin-top: 10px;
+}
+
+.reply-item {
+  padding: 8px;
+  border-left: 2px solid #e0e0e0;
+  margin-bottom: 8px;
+}
