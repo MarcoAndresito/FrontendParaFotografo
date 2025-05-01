@@ -113,7 +113,7 @@ function UploadPhoto() {
         onDragOver={handleDragOver}
         onClick={() => fileInputRef.current.click()}
       >
-        <p>Arrastra y suelta imágenes aquí, o haz clic para seleccionar archivos</p>
+        <p>Arrastra y suelta imágenes aquí o haz clic para seleccionar archivos</p>
         <input
           type="file"
           multiple
@@ -172,6 +172,7 @@ function UploadPhoto() {
         </div>
       )}
     </div>
+    
   );
 }
 
