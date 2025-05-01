@@ -13,15 +13,31 @@ const AlbumList = () => {
                 "Content-Type": "application/json",
             },
         })
-            .then((data) => {
-                return data.json();
+            .then((data) => data.json())
+            .then((data) => setAlbumes(data))
+            .catch((error) => console.log("error:", error));
+    };
+
+    const eliminarAlbum = (id) => {
+        if (window.confirm(`¿Estás seguro de que deseas eliminar el álbum con ID ${id}?`)) {
+            fetch(`https://localhost:44302/api/Albumes/${id}`, {
+                method: "DELETE",
             })
-            .then((data) => {
-                setAlbumes(data);
-            })
-            .catch((error) => {
-                console.log("error:", error);
-            });
+                .then((response) => {
+                    if (response.ok) {
+                        console.log(`Álbum con ID ${id} eliminado.`);
+                        obtenerAlbumes(); // Recargar la lista después de eliminar
+                    } else {
+                        console.error(`Error al eliminar el álbum con ID ${id}.`);
+                    }
+                })
+                .catch((error) => console.error("Error al eliminar:", error));
+        }
+    };
+
+    const descargarAlbum = (id) => {
+        const urlDescargaBackend = `https://localhost:7062/api/Albumes/${id}/Exportar`;
+        window.location.href = urlDescargaBackend;
     };
 
     useEffect(() => {
@@ -34,8 +50,8 @@ const AlbumList = () => {
 
     return (
         <div className={styles.container}>
-           <h1 className={styles.title}>------Lista de Álbumes------</h1>
-            <div className={styles.buttonContainer}> {/* Nuevo contenedor para el botón */}
+            <h1 className={styles.title}>------Lista de Álbumes------</h1>
+            <div className={styles.buttonContainer}>
                 <button className={styles.addButton}>Agregar nuevo álbum</button>
             </div>
             <div className={styles.tableContainer}>
@@ -64,10 +80,11 @@ const AlbumList = () => {
                                         </button>
                                         {openDropdownId === album.id && (
                                             <div className={styles.dropdownContent}>
-                                                <button className={styles.dropdownItem}>Subir</button>
-                                                <button className={styles.dropdownItem}>Descargar</button>
-                                                <button className={styles.dropdownItem}>Editar</button>
-                                                <button className={styles.dropdownItem}>Eliminar</button>
+                                                <Link to="/uploadphoto" className={styles.dropdownItem}>Subir</Link>
+                                                <button onClick={() => descargarAlbum(album.id)} className={styles.dropdownItem}>Descargar</button>
+                                                <button onClick={() => eliminarAlbum(album.id)} className={styles.dropdownItem}>Eliminar</button>
+                                                <Link to="/ConfigurarAlbum" className={styles.dropdownItem}>Actualizar</Link>
+                                                <Link to="/albumes" className={styles.dropdownItem}>Visualizar</Link>
                                             </div>
                                         )}
                                     </div>
