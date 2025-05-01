@@ -53,11 +53,11 @@ const App = () => {
                     Acerca de
                 </NavLink>
                 <NavLink
-
+                    to="/uploadphoto" //  Cambia esto
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
                 >
                     Álbum
-                </NavLink>{" "}
-                {/* Enlace a la página de carga de fotos */}
+                </NavLink>
                 <NavLink
                     to="/RegisterUser"
                     className={({ isActive }) => (isActive ? "active-link" : undefined)}
@@ -121,12 +121,10 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/uploadphoto" element={<UploadPhoto />} />{" "}
-                {/* Ruta correcta para UploadPhoto */}
-                <Route path="/RegisterUser" element={<RegisterUser />} />
-                <Route path="/Autenticacion" element={<Autenticacion />} />
-                <Route path="/ExportarAlbum" element={<ExportarAlbum />} />{" "}
-                {/* Ruta correcta para ExportarAlbum */}
+                <Route path="/uploadphoto" element={<UploadPhoto />} />{/* Ruta correcta para UploadPhoto */}
+                <Route path="/registerUser" element={<RegisterUser />} />
+                <Route path="/autenticacion" element={<Autenticacion />} />
+                <Route path="/exportarAlbum" element={<ExportarAlbum />} />{/* Ruta correcta para ExportarAlbum */}
                 <Route path="/comentarios" element={<Coment />} />
                 <Route path="/Productos" element={<ProductosList />} />
                 <Route path="/Parametros" element={<ParametrosList />} />

@@ -51,7 +51,7 @@ const RegisterUser = () => {
           Contraseña: "",
           ConfirmarContraseña: ""
         });
-        navigate("/autenticacion");
+        
       } else {
         showModal("Error al registrar: " + (data?.message || data), "error");
       }
@@ -137,7 +137,7 @@ const RegisterUser = () => {
             <div className={styles.modalOverlay}>
             <div className={`${styles.modal} ${styles[modal.type]}`}>
                 <p>{modal.message}</p>
-                <button className={styles.btn} onClick={() => setModal({ ...modal, visible: false })}>
+                <button className={styles.btn} onClick={() => navigate("/autenticacion")}>
                 Cerrar
                 </button>
             </div>
